@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import tools.Util;
 
 /**
  *
@@ -32,6 +33,9 @@ public class JDlgVenda extends javax.swing.JDialog {
             Logger.getLogger(JDlgVenda.class.getName()).log(Level.SEVERE, null, ex);
         }
         jFmtData.setFormatterFactory(new DefaultFormatterFactory(maskDt));
+        
+        Util.habilitar(false,jTable1, jTxtCodigo,jTxtTotal,jFmtData, jCboCliente, jCboFuncionario, jBtnAdicionarProduto,jBtnAlterarProduto,jBtnRemoverProduto,jBtnCancelar,jBtnConfirmar);
+        
     }
 
     /**
@@ -285,7 +289,8 @@ public class JDlgVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnAlterarProdutoActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-
+        Util.habilitar(false,jTable1, jTxtCodigo,jTxtTotal,jFmtData, jCboCliente, jCboFuncionario, jBtnAdicionarProduto,jBtnAlterarProduto,jBtnRemoverProduto,jBtnCancelar,jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -294,11 +299,13 @@ public class JDlgVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-
+        Util.habilitar(true,jTable1, jTxtCodigo,jTxtTotal,jFmtData, jCboCliente, jCboFuncionario, jBtnAdicionarProduto,jBtnAlterarProduto,jBtnRemoverProduto,jBtnCancelar,jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-
+        Util.habilitar(false,jTable1, jTxtCodigo,jTxtTotal,jFmtData, jCboCliente, jCboFuncionario, jBtnAdicionarProduto,jBtnAlterarProduto,jBtnRemoverProduto,jBtnCancelar,jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -306,7 +313,8 @@ public class JDlgVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-
+        Util.habilitar(false,jTable1, jTxtCodigo,jTxtTotal,jFmtData, jCboCliente, jCboFuncionario, jBtnAdicionarProduto,jBtnAlterarProduto,jBtnRemoverProduto,jBtnCancelar,jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jFmtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataActionPerformed

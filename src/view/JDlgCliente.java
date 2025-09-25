@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import tools.Util;
 
 /**
  *
@@ -36,7 +37,7 @@ public class JDlgCliente extends javax.swing.JDialog {
         }
         jFmtDataExped.setFormatterFactory(new DefaultFormatterFactory(maskDtExp));
         jFmtDataNasc.setFormatterFactory(new DefaultFormatterFactory(maskDtNas));
-
+        Util.habilitar(false, jTxtCodigo, jTxtNome,jTxtNascionalidade, jTxtRg,jTxtOrgaoExpedidor,jTxtPais, jTxtCidade, jTxtBairro,jTxtRua,jTxtNumero, jFmtCpf, jFmtDataExped,jFmtDataNasc,jFmtTelefone,jCboSexo,jBtnCancelar,jBtnConfirmar);
     }
 
     /**
@@ -386,7 +387,8 @@ public class JDlgCliente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-
+        Util.habilitar(false, jTxtCodigo, jTxtNome,jTxtNascionalidade, jTxtRg,jTxtOrgaoExpedidor,jTxtPais, jTxtCidade, jTxtBairro,jTxtRua,jTxtNumero, jFmtCpf, jFmtDataExped,jFmtDataNasc,jFmtTelefone,jCboSexo,jBtnCancelar,jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir,jBtnAlterar,jBtnExcluir,jBtnPesquisar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -395,18 +397,22 @@ public class JDlgCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-
+        Util.habilitar(true, jTxtCodigo, jTxtNome,jTxtNascionalidade, jTxtRg,jTxtOrgaoExpedidor,jTxtPais, jTxtCidade, jTxtBairro,jTxtRua,jTxtNumero, jFmtCpf, jFmtDataExped,jFmtDataNasc,jFmtTelefone,jCboSexo,jBtnCancelar,jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir,jBtnAlterar,jBtnExcluir,jBtnPesquisar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-
+        Util.habilitar(true, jTxtCodigo, jTxtNome,jTxtNascionalidade, jTxtRg,jTxtOrgaoExpedidor,jTxtPais, jTxtCidade, jTxtBairro,jTxtRua,jTxtNumero, jFmtCpf, jFmtDataExped,jFmtDataNasc,jFmtTelefone,jCboSexo,jBtnCancelar,jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir,jBtnAlterar,jBtnExcluir,jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-
+        
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
+        Util.habilitar(false, jTxtCodigo, jTxtNome,jTxtNascionalidade, jTxtRg,jTxtOrgaoExpedidor, jTxtPais, jTxtCidade, jTxtBairro, jTxtRua, jTxtNumero, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 

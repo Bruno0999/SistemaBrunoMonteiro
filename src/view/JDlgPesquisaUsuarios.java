@@ -129,7 +129,7 @@ public class JDlgPesquisaUsuarios extends javax.swing.JDialog {
     }
 
     void setTelaAnterior(JDlgUsuario aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

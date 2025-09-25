@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import tools.Util;
+
 /**
  *
  * @author bruno_monteiro
@@ -26,11 +27,8 @@ public class JDlgUsuario extends javax.swing.JDialog {
     /**
      * Creates new form JDlgUsuario
      */
-    private boolean inserir = false;
     private MaskFormatter maskDtn;
     private MaskFormatter maskCpf;
-    private SimpleDateFormat dtnFormat = new SimpleDateFormat("dd/MM/yyyy");
-    public JComponent[] componentesTela;
 
     public JDlgUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -43,16 +41,18 @@ public class JDlgUsuario extends javax.swing.JDialog {
         try {
             maskDtn = new MaskFormatter("##/##/####");
             maskCpf = new MaskFormatter("###.###.###-##");
-            maskDtn.setPlaceholderCharacter('_');
         } catch (Exception ex) {
 
         }
         jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(maskCpf));
         jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(maskDtn));
 
+        Util.habilitar(false, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        jChbAtivo.setSelected(true);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -326,37 +326,35 @@ public class JDlgUsuario extends javax.swing.JDialog {
         JDlgPesquisaUsuarios jDlgPesquisaUsuarios = new JDlgPesquisaUsuarios(null, true);
         jDlgPesquisaUsuarios.setTelaAnterior(this);
         jDlgPesquisaUsuarios.setVisible(true);
- 
+
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        Util.habilitar(true, componentesTela);
-        Util.limpar(componentesTela);
-        this.inserir = true;
-        jTxtIdUsuarios.grabFocus();
+        Util.habilitar(true, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        jChbAtivo.setSelected(true);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        Util.habilitar(false, componentesTela);
-        jBtnAlterar.setEnabled(false);
-        jBtnExcluir.setEnabled(false);
-        Util.limpar(componentesTela);
-        jBtnIncluir.grabFocus();
-
+        Util.habilitar(false, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        jChbAtivo.setSelected(true);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        
+        Util.habilitar(false, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        jChbAtivo.setSelected(true);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        Util.habilitar(true, componentesTela);
-        jTxtIdUsuarios.setEnabled(false);
-        jTxtNome.grabFocus();
+        Util.habilitar(true, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        jChbAtivo.setSelected(true);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-       
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jPwfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPwfSenhaActionPerformed

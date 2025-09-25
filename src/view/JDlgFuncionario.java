@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import tools.Util;
 
 /**
  *
@@ -40,7 +41,9 @@ public class JDlgFuncionario extends javax.swing.JDialog {
         jFmtDataNasc.setFormatterFactory(new DefaultFormatterFactory(maskDtNas));
         jFmtDataPag.setFormatterFactory(new DefaultFormatterFactory(maskDtPag));
         jFmtDataIng.setFormatterFactory(new DefaultFormatterFactory(maskDtIng));
-        
+
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
+
     }
 
     /**
@@ -73,7 +76,7 @@ public class JDlgFuncionario extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTxtPais = new javax.swing.JTextField();
+        jTxtSalario = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -85,8 +88,8 @@ public class JDlgFuncionario extends javax.swing.JDialog {
         jBtnExcluir = new javax.swing.JButton();
         jBtnConfirmar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jCboSexo1 = new javax.swing.JComboBox<>();
-        jCboSexo2 = new javax.swing.JComboBox<>();
+        jCboNivel = new javax.swing.JComboBox<>();
+        jCboFuncao = new javax.swing.JComboBox<>();
         jFmtDataPag = new javax.swing.JFormattedTextField();
         jFmtDataIng = new javax.swing.JFormattedTextField();
 
@@ -210,9 +213,9 @@ public class JDlgFuncionario extends javax.swing.JDialog {
             }
         });
 
-        jCboSexo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Auditor", "Administrador" }));
+        jCboNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Auditor", "Administrador" }));
 
-        jCboSexo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Caixa", "Supervisor", "Gerente", "Proprietário" }));
+        jCboFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Caixa", "Supervisor", "Gerente", "Proprietário" }));
 
         jFmtDataPag.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         jFmtDataPag.addActionListener(new java.awt.event.ActionListener() {
@@ -278,14 +281,14 @@ public class JDlgFuncionario extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jTxtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTxtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jFmtDataPag, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCboSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -311,7 +314,7 @@ public class JDlgFuncionario extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
-                                    .addComponent(jCboSexo2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jCboFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -375,8 +378,8 @@ public class JDlgFuncionario extends javax.swing.JDialog {
                                     .addComponent(jLabel13))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTxtPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCboSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTxtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jFmtDataPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel17))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,7 +392,7 @@ public class JDlgFuncionario extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCboSexo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jCboFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
@@ -407,7 +410,8 @@ public class JDlgFuncionario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -416,11 +420,13 @@ public class JDlgFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-
+        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-
+        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -428,7 +434,8 @@ public class JDlgFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoActionPerformed
@@ -501,9 +508,9 @@ public class JDlgFuncionario extends javax.swing.JDialog {
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
+    private javax.swing.JComboBox<String> jCboFuncao;
+    private javax.swing.JComboBox<String> jCboNivel;
     private javax.swing.JComboBox<String> jCboSexo;
-    private javax.swing.JComboBox<String> jCboSexo1;
-    private javax.swing.JComboBox<String> jCboSexo2;
     private javax.swing.JFormattedTextField jFmtCpf;
     private javax.swing.JFormattedTextField jFmtDataExped;
     private javax.swing.JFormattedTextField jFmtDataIng;
@@ -530,7 +537,7 @@ public class JDlgFuncionario extends javax.swing.JDialog {
     private javax.swing.JTextField jTxtNascionalidade;
     private javax.swing.JTextField jTxtNome;
     private javax.swing.JTextField jTxtOrgaoExpedidor;
-    private javax.swing.JTextField jTxtPais;
     private javax.swing.JTextField jTxtRg;
+    private javax.swing.JTextField jTxtSalario;
     // End of variables declaration//GEN-END:variables
 }

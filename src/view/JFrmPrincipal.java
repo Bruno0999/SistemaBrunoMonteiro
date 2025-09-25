@@ -42,6 +42,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.setText("Cadastro");
 
         jMnuCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente_1.png"))); // NOI18N
         jMnuCliente.setMnemonic('c');
         jMnuCliente.setText("Cliente");
         jMnuCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -52,6 +53,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMnuCliente);
 
         jMnuUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
         jMnuUsuario.setMnemonic('u');
         jMnuUsuario.setText("Usuario");
         jMnuUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +64,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMnuUsuario);
 
         jMnuFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/funcionario.png"))); // NOI18N
         jMnuFuncionario.setMnemonic('f');
         jMnuFuncionario.setText("Funcionarios");
         jMnuFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +75,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMnuFuncionario);
 
         jMnuProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produto.png"))); // NOI18N
         jMnuProduto.setMnemonic('p');
         jMnuProduto.setText("Produto");
         jMnuProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +90,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu2.setMnemonic('m');
         jMenu2.setText("Movimento");
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produto_1.png"))); // NOI18N
         jMenuItem5.setMnemonic('v');
         jMenuItem5.setText("Venda");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {

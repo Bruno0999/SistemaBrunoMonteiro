@@ -84,7 +84,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtPais" min="-2" pref="212" max="-2" attributes="0"/>
+                          <Component id="jTxtSalario" min="-2" pref="212" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -93,7 +93,7 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCboSexo1" min="-2" pref="116" max="-2" attributes="0"/>
+                          <Component id="jCboNivel" min="-2" pref="116" max="-2" attributes="0"/>
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -123,7 +123,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCboSexo2" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
+                                  <Component id="jCboFuncao" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -211,8 +211,8 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTxtPais" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCboSexo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTxtSalario" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCboNivel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jFmtDataPag" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -232,7 +232,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCboSexo2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCboFuncao" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -368,7 +368,7 @@
         <Property name="text" type="java.lang.String" value="Sal&#xe1;rio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTxtPais">
+    <Component class="javax.swing.JTextField" name="jTxtSalario">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
@@ -464,7 +464,7 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
-    <Component class="javax.swing.JComboBox" name="jCboSexo1">
+    <Component class="javax.swing.JComboBox" name="jCboNivel">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
@@ -478,7 +478,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jCboSexo2">
+    <Component class="javax.swing.JComboBox" name="jCboFuncao">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="5">

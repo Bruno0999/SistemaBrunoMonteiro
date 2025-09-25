@@ -5,6 +5,8 @@
  */
 package view;
 
+import tools.Util;
+
 /**
  *
  * @author bruno_monteiro
@@ -14,12 +16,14 @@ public class JDlgProduto extends javax.swing.JDialog {
     /**
      * Creates new form JDlgProduto
      */
-    
     public JDlgProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Produto");
+
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }
 
     /**
@@ -232,7 +236,8 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jFmtValorActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -241,11 +246,13 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-
+        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -253,7 +260,8 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     /**
