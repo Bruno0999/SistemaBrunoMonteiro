@@ -88,12 +88,12 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTxtCidade" min="-2" pref="198" max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFmtDataPag" min="-2" pref="107" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTxtBairro" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="jCboSexo1" min="-2" pref="116" max="-2" attributes="0"/>
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -117,13 +117,13 @@
                           <Component id="jTxtCodigo" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTxtRua" alignment="0" min="-2" pref="334" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFmtDataIng" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTxtNumero" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                                  <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCboSexo2" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -141,6 +141,7 @@
               <Component id="jLabel1" min="-2" pref="14" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTxtCodigo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -156,7 +157,6 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTxtNascionalidade" min="-2" max="-2" attributes="0"/>
@@ -203,26 +203,36 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTxtPais" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCboSexo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFmtDataPag" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTxtPais" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jFmtDataIng" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTxtRua" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTxtNumero" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCboSexo2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -355,40 +365,29 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pais"/>
+        <Property name="text" type="java.lang.String" value="Sal&#xe1;rio"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtPais">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTxtCidade">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cidade"/>
+        <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTxtBairro">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bairro"/>
+        <Property name="text" type="java.lang.String" value="N&#xed;vel de acesso"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTxtRua">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel16">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Rua"/>
+        <Property name="text" type="java.lang.String" value="Data de ingresso"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTxtNumero">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtNumeroActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
+        <Property name="text" type="java.lang.String" value="Data de Pagamento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnCancelar">
@@ -464,6 +463,56 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jCboSexo1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Operador"/>
+            <StringItem index="1" value="Auditor"/>
+            <StringItem index="2" value="Administrador"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jCboSexo2">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="Vendedor"/>
+            <StringItem index="1" value="Caixa"/>
+            <StringItem index="2" value="Supervisor"/>
+            <StringItem index="3" value="Gerente"/>
+            <StringItem index="4" value="Propriet&#xe1;rio"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFmtDataPag">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format subtype="0" type="1"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFmtDataPagActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFmtDataIng">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format subtype="0" type="1"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFmtDataIngActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

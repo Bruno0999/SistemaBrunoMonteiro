@@ -9,16 +9,16 @@ package view;
  *
  * @author bruno_monteiro
  */
-public class JDlgPesquisaUsuarios extends javax.swing.JDialog {
+public class JDlgPesquisaProduto extends javax.swing.JDialog {
 
     /**
      * Creates new form JDlgPesquisaUsuarios
      */
-    public JDlgPesquisaUsuarios(java.awt.Frame parent, boolean modal) {
+    public JDlgPesquisaProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Pesquisar Usuario");
+        setTitle("Pesquisar Produto");
     }
 
     /**
@@ -103,20 +103,23 @@ public class JDlgPesquisaUsuarios extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPesquisaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPesquisaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPesquisaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgPesquisaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgPesquisaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgPesquisaUsuarios dialog = new JDlgPesquisaUsuarios(new javax.swing.JFrame(), true);
+                JDlgPesquisaProduto dialog = new JDlgPesquisaProduto(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

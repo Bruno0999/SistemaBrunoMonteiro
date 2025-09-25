@@ -225,7 +225,7 @@
     <Component class="javax.swing.JButton" name="jBtnIncluir">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/add.png"/>
+          <Image iconType="3" name="/img/incluir.png"/>
         </Property>
         <Property name="mnemonic" type="int" value="73"/>
         <Property name="text" type="java.lang.String" value="Incluir"/>
@@ -237,7 +237,7 @@
     <Component class="javax.swing.JButton" name="jBtnAlterar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/editar.png"/>
+          <Image iconType="3" name="/img/alterar.png"/>
         </Property>
         <Property name="mnemonic" type="int" value="65"/>
         <Property name="text" type="java.lang.String" value="Alterar"/>
@@ -249,7 +249,7 @@
     <Component class="javax.swing.JButton" name="jBtnExcluir">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/deletar.png"/>
+          <Image iconType="3" name="/img/Excluir.png"/>
         </Property>
         <Property name="mnemonic" type="int" value="69"/>
         <Property name="text" type="java.lang.String" value="Excluir"/>
@@ -285,7 +285,7 @@
     <Component class="javax.swing.JButton" name="jBtnPesquisar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/pesquisa1.png"/>
+          <Image iconType="3" name="/img/pesquisar.png"/>
         </Property>
         <Property name="mnemonic" type="int" value="80"/>
         <Property name="text" type="java.lang.String" value="Pesquisar"/>

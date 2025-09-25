@@ -16,27 +16,31 @@ import javax.swing.text.MaskFormatter;
  *
  * @author bruno_monteiro
  */
-public class JDlgCliente extends javax.swing.JDialog {
+public class JDlgFuncionario extends javax.swing.JDialog {
 
     /**
      * Creates new form JDlgCliente
      */
-    MaskFormatter maskDtNas, maskDtExp;
+    MaskFormatter maskDtNas, maskDtExp, maskDtIng, maskDtPag;
 
-    public JDlgCliente(java.awt.Frame parent, boolean modal) {
+    public JDlgFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cliente");
+        setTitle("Funcionario");
         setLocationRelativeTo(null);
         try {
             maskDtNas = new MaskFormatter("##/##/####");
             maskDtExp = new MaskFormatter("##/##/####");
+            maskDtIng = new MaskFormatter("##/##/####");
+            maskDtPag = new MaskFormatter("##/##/####");
         } catch (ParseException ex) {
-            Logger.getLogger(JDlgCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JDlgFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
         jFmtDataExped.setFormatterFactory(new DefaultFormatterFactory(maskDtExp));
         jFmtDataNasc.setFormatterFactory(new DefaultFormatterFactory(maskDtNas));
-
+        jFmtDataPag.setFormatterFactory(new DefaultFormatterFactory(maskDtPag));
+        jFmtDataIng.setFormatterFactory(new DefaultFormatterFactory(maskDtIng));
+        
     }
 
     /**
@@ -70,13 +74,9 @@ public class JDlgCliente extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTxtPais = new javax.swing.JTextField();
-        jTxtCidade = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTxtBairro = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTxtRua = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTxtNumero = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jBtnCancelar = new javax.swing.JButton();
         jBtnPesquisar = new javax.swing.JButton();
@@ -85,6 +85,10 @@ public class JDlgCliente extends javax.swing.JDialog {
         jBtnExcluir = new javax.swing.JButton();
         jBtnConfirmar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jCboSexo1 = new javax.swing.JComboBox<>();
+        jCboSexo2 = new javax.swing.JComboBox<>();
+        jFmtDataPag = new javax.swing.JFormattedTextField();
+        jFmtDataIng = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -142,21 +146,15 @@ public class JDlgCliente extends javax.swing.JDialog {
 
         jLabel10.setText("Sexo");
 
-        jLabel11.setText("Pais");
+        jLabel11.setText("Salário");
 
-        jLabel12.setText("Cidade");
+        jLabel12.setText("Função");
 
-        jLabel13.setText("Bairro");
+        jLabel13.setText("Nível de acesso");
 
-        jLabel16.setText("Rua");
+        jLabel16.setText("Data de ingresso");
 
-        jTxtNumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtNumeroActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setText("Número");
+        jLabel17.setText("Data de Pagamento");
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jBtnCancelar.setMnemonic('r');
@@ -209,6 +207,24 @@ public class JDlgCliente extends javax.swing.JDialog {
         jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnConfirmarActionPerformed(evt);
+            }
+        });
+
+        jCboSexo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Operador", "Auditor", "Administrador" }));
+
+        jCboSexo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Caixa", "Supervisor", "Gerente", "Proprietário" }));
+
+        jFmtDataPag.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jFmtDataPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFmtDataPagActionPerformed(evt);
+            }
+        });
+
+        jFmtDataIng.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jFmtDataIng.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFmtDataIngActionPerformed(evt);
             }
         });
 
@@ -265,11 +281,11 @@ public class JDlgCliente extends javax.swing.JDialog {
                             .addComponent(jTxtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel17)
+                            .addComponent(jFmtDataPag, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCboSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -290,12 +306,12 @@ public class JDlgCliente extends javax.swing.JDialog {
                             .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTxtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16))
+                                    .addComponent(jLabel16)
+                                    .addComponent(jFmtDataIng, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTxtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17))))
+                                    .addComponent(jLabel12)
+                                    .addComponent(jCboSexo2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -306,6 +322,7 @@ public class JDlgCliente extends javax.swing.JDialog {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -318,7 +335,6 @@ public class JDlgCliente extends javax.swing.JDialog {
                             .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFmtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTxtNascionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -352,23 +368,28 @@ public class JDlgCliente extends javax.swing.JDialog {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTxtPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTxtPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCboSexo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFmtDataPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel17))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jFmtDataIng, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel16))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel17)
+                        .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jCboSexo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
@@ -390,8 +411,8 @@ public class JDlgCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        JDlgPesquisaCliente jDlgPesquisaCliente = new JDlgPesquisaCliente(null, true);
-        jDlgPesquisaCliente.setVisible(true);
+        JDlgPesquisaFuncionario jDlgPesquisaFuncionario = new JDlgPesquisaFuncionario(null, true);
+        jDlgPesquisaFuncionario.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -414,10 +435,6 @@ public class JDlgCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtCodigoActionPerformed
 
-    private void jTxtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtNumeroActionPerformed
-
     private void jFmtDataNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataNascActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFmtDataNascActionPerformed
@@ -425,6 +442,14 @@ public class JDlgCliente extends javax.swing.JDialog {
     private void jFmtDataExpedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataExpedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFmtDataExpedActionPerformed
+
+    private void jFmtDataPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataPagActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFmtDataPagActionPerformed
+
+    private void jFmtDataIngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtDataIngActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFmtDataIngActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,20 +468,21 @@ public class JDlgCliente extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgCliente dialog = new JDlgCliente(new javax.swing.JFrame(), true);
+                JDlgFuncionario dialog = new JDlgFuncionario(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -476,9 +502,13 @@ public class JDlgCliente extends javax.swing.JDialog {
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
     private javax.swing.JComboBox<String> jCboSexo;
+    private javax.swing.JComboBox<String> jCboSexo1;
+    private javax.swing.JComboBox<String> jCboSexo2;
     private javax.swing.JFormattedTextField jFmtCpf;
     private javax.swing.JFormattedTextField jFmtDataExped;
+    private javax.swing.JFormattedTextField jFmtDataIng;
     private javax.swing.JFormattedTextField jFmtDataNasc;
+    private javax.swing.JFormattedTextField jFmtDataPag;
     private javax.swing.JFormattedTextField jFmtTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -496,15 +526,11 @@ public class JDlgCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTxtBairro;
-    private javax.swing.JTextField jTxtCidade;
     private javax.swing.JTextField jTxtCodigo;
     private javax.swing.JTextField jTxtNascionalidade;
     private javax.swing.JTextField jTxtNome;
-    private javax.swing.JTextField jTxtNumero;
     private javax.swing.JTextField jTxtOrgaoExpedidor;
     private javax.swing.JTextField jTxtPais;
     private javax.swing.JTextField jTxtRg;
-    private javax.swing.JTextField jTxtRua;
     // End of variables declaration//GEN-END:variables
 }
