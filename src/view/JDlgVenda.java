@@ -289,8 +289,8 @@ public class JDlgVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-        JDlgPesquisaFuncionario jDlgPesquisaFuncionario = new JDlgPesquisaFuncionario(null, true);
-        jDlgPesquisaFuncionario.setVisible(true);
+        JDlgPesquisaVenda jDlgPesquisaVenda = new JDlgPesquisaVenda(null, true);
+        jDlgPesquisaVenda.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed

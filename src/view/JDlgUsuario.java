@@ -52,21 +52,6 @@ public class JDlgUsuario extends javax.swing.JDialog {
 
     }
 
-    private boolean preenchido() {
-
-        if (!jTxtNome.getText().trim().isEmpty()
-                && !jTxtApelido.getText().trim().isEmpty()
-                && !jFmtCpf.getText().trim().isEmpty()
-                && jFmtCpf.getText().trim().length() == 14
-                && !jFmtDataNascimento.getText().trim().isEmpty()
-                && !new String(jPwfSenha.getPassword()).trim().isEmpty()
-                && jCboNivel.getSelectedIndex() != -1) {
-            return true;
-        }
-
-        return false;
-
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -338,22 +323,10 @@ public class JDlgUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_jCboNivelActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
-
         JDlgPesquisaUsuarios jDlgPesquisaUsuarios = new JDlgPesquisaUsuarios(null, true);
         jDlgPesquisaUsuarios.setTelaAnterior(this);
         jDlgPesquisaUsuarios.setVisible(true);
-        
-        if(jTxtIdUsuarios.getText().isEmpty() || jTxtIdUsuarios.getText().equals("")){
-            return;
-        }
-        
-
-        jBtnAlterar.grabFocus();
-        jBtnAlterar.setEnabled(true);
-        jBtnExcluir.setEnabled(true);
-        jBtnCancelar.setEnabled(true);
-        jBtnIncluir.setEnabled(false);
-
+ 
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed

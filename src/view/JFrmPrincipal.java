@@ -29,10 +29,10 @@ public class JFrmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMnuCliente = new javax.swing.JMenuItem();
+        jMnuUsuario = new javax.swing.JMenuItem();
+        jMnuFuncionario = new javax.swing.JMenuItem();
+        jMnuProduto = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
 
@@ -41,29 +41,58 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu1.setMnemonic('c');
         jMenu1.setText("Cadastro");
 
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMnuCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuCliente.setMnemonic('c');
+        jMnuCliente.setText("Cliente");
+        jMnuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMnuClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMnuCliente);
 
-        jMenuItem2.setText("Usuario");
-        jMenu1.add(jMenuItem2);
+        jMnuUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuUsuario.setMnemonic('u');
+        jMnuUsuario.setText("Usuario");
+        jMnuUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMnuUsuario);
 
-        jMenuItem3.setText("Funcionarios");
-        jMenu1.add(jMenuItem3);
+        jMnuFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuFuncionario.setMnemonic('f');
+        jMnuFuncionario.setText("Funcionarios");
+        jMnuFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuFuncionarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMnuFuncionario);
 
-        jMenuItem4.setText("Produto");
-        jMenu1.add(jMenuItem4);
+        jMnuProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMnuProduto.setMnemonic('p');
+        jMnuProduto.setText("Produto");
+        jMnuProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuProdutoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMnuProduto);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setMnemonic('m');
         jMenu2.setText("Movimento");
 
+        jMenuItem5.setMnemonic('v');
         jMenuItem5.setText("Venda");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
@@ -84,9 +113,30 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMnuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuClienteActionPerformed
+        JDlgCliente jDlgCliente = new JDlgCliente(null, true);
+        jDlgCliente.setVisible(true);
+    }//GEN-LAST:event_jMnuClienteActionPerformed
+
+    private void jMnuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuProdutoActionPerformed
+       JDlgProduto jDlgProduto = new JDlgProduto(null, true);
+       jDlgProduto.setVisible(true);
+    }//GEN-LAST:event_jMnuProdutoActionPerformed
+
+    private void jMnuFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuFuncionarioActionPerformed
+        JDlgFuncionario jDlgFuncionario = new JDlgFuncionario(null, true);
+        jDlgFuncionario.setVisible(true);
+    }//GEN-LAST:event_jMnuFuncionarioActionPerformed
+
+    private void jMnuUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuUsuarioActionPerformed
+        JDlgUsuario jDlgUsuario = new JDlgUsuario(null, true);
+        jDlgUsuario.setVisible(true);
+    }//GEN-LAST:event_jMnuUsuarioActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        JDlgVenda jDlgVenda = new JDlgVenda(null, true);
+        jDlgVenda.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,10 +177,10 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMnuCliente;
+    private javax.swing.JMenuItem jMnuFuncionario;
+    private javax.swing.JMenuItem jMnuProduto;
+    private javax.swing.JMenuItem jMnuUsuario;
     // End of variables declaration//GEN-END:variables
 }
