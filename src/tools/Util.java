@@ -58,12 +58,8 @@ public class Util {
         return false;
     }
 
-    public static boolean mostrar(String mensagem, String titulo) {
-        int option = JOptionPane.showConfirmDialog(null, mensagem, titulo, JOptionPane.YES_OPTION);
-        if (option == JOptionPane.YES_OPTION) {
-            return true;
-        }
-        return false;
+    public static void mostrar(String mensagem, String titulo, int type) {
+        JOptionPane.showMessageDialog(null, mensagem, titulo, type);
     }
 
     public static int strToInt(String value) {

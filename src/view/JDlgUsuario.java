@@ -4,6 +4,8 @@
  */
 package view;
 
+import bean.BcmUsuarios;
+import dao.UsuariosDAO;
 import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +31,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
      */
     private MaskFormatter maskDtn;
     private MaskFormatter maskCpf;
+    boolean incluir = false;
 
     public JDlgUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -51,6 +54,38 @@ public class JDlgUsuario extends javax.swing.JDialog {
         jChbAtivo.setSelected(true);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
+    }
+
+    public void beanView(BcmUsuarios bcmUsuarios) {
+        jTxtIdUsuarios.setText(Util.intToStr(bcmUsuarios.getBcmIdUsuario()));
+        jTxtNome.setText(bcmUsuarios.getBcmNome());
+        jTxtApelido.setText(bcmUsuarios.getBcmApelido());
+        jFmtCpf.setText(bcmUsuarios.getBcmCpf());
+        jFmtDataNascimento.setText(Util.dateToStr(bcmUsuarios.getBcmDataNascimento()));
+        jPwfSenha.setText(bcmUsuarios.getBcmSenha());
+        jCboNivel.setSelectedIndex(bcmUsuarios.getBcmNivel());
+        if (bcmUsuarios.getBcmAtivo().equals("S")) {
+            jChbAtivo.setSelected(true);
+        } else {
+            jChbAtivo.setSelected(false);
+        }
+    }
+
+    public BcmUsuarios viewBean() {
+        BcmUsuarios bcmUsuarios = new BcmUsuarios();
+        bcmUsuarios.setBcmIdUsuario(Util.strToInt(jTxtIdUsuarios.getText()));
+        bcmUsuarios.setBcmNome(jTxtNome.getText());
+        bcmUsuarios.setBcmApelido(jTxtApelido.getText());
+        bcmUsuarios.setBcmCpf(jFmtCpf.getText());
+        bcmUsuarios.setBcmDataNascimento(Util.strToDate(jFmtDataNascimento.getText()));
+        bcmUsuarios.setBcmSenha(jPwfSenha.getText());
+        bcmUsuarios.setBcmNivel(jCboNivel.getSelectedIndex());
+        if (jChbAtivo.isSelected()) {
+            bcmUsuarios.setBcmAtivo("S");
+        } else {
+            bcmUsuarios.setBcmAtivo("N");
+        }
+        return bcmUsuarios;
     }
 
     /**
@@ -331,8 +366,10 @@ public class JDlgUsuario extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         Util.habilitar(true, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        Util.limpar(jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento);
         jChbAtivo.setSelected(true);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -345,15 +382,39 @@ public class JDlgUsuario extends javax.swing.JDialog {
         Util.habilitar(false, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
         jChbAtivo.setSelected(true);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        BcmUsuarios bcmUsuarios;
+        bcmUsuarios = viewBean();
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        if (incluir) {
+            usuariosDAO.insert(bcmUsuarios);
+            Util.mostrar("Usuario cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            usuariosDAO.update(bcmUsuarios);
+            Util.mostrar("Usuario atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        Util.limpar(jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento);
+
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        Util.habilitar(true, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
         jChbAtivo.setSelected(true);
+        incluir = false;
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        boolean excluir = Util.perguntar("Deseja realmente excluir este usuario?", "Aternção");
+        if (excluir) {
+            BcmUsuarios bcmUsuarios;
+            bcmUsuarios = viewBean();
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            usuariosDAO.delete(bcmUsuarios);
+            Util.limpar(jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento);
+            Util.mostrar("Usuario excluido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            Util.mostrar("Exclusão cancelda!", "Atenção", JOptionPane.CANCEL_OPTION);
+        }
 
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 

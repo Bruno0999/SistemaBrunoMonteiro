@@ -26,7 +26,7 @@ public class BcmUsuarios  implements java.io.Serializable {
      private String bcmCpf;
      private Date bcmDataNascimento;
      private String bcmSenha;
-     private Integer bcmNivel;
+     private int bcmNivel;
      private String bcmAtivo;
 
     public BcmUsuarios() {
@@ -36,7 +36,7 @@ public class BcmUsuarios  implements java.io.Serializable {
     public BcmUsuarios(int bcmIdUsuario) {
         this.bcmIdUsuario = bcmIdUsuario;
     }
-    public BcmUsuarios(int bcmIdUsuario, String bcmNome, String bcmApelido, String bcmCpf, Date bcmDataNascimento, String bcmSenha, Integer bcmNivel, String bcmAtivo) {
+    public BcmUsuarios(int bcmIdUsuario, String bcmNome, String bcmApelido, String bcmCpf, Date bcmDataNascimento, String bcmSenha, int bcmNivel, String bcmAtivo) {
        this.bcmIdUsuario = bcmIdUsuario;
        this.bcmNome = bcmNome;
        this.bcmApelido = bcmApelido;
@@ -111,11 +111,11 @@ public class BcmUsuarios  implements java.io.Serializable {
 
     
     @Column(name="bcm_nivel")
-    public Integer getBcmNivel() {
+    public int getBcmNivel() {
         return this.bcmNivel;
     }
     
-    public void setBcmNivel(Integer bcmNivel) {
+    public void setBcmNivel(int bcmNivel) {
         this.bcmNivel = bcmNivel;
     }
 

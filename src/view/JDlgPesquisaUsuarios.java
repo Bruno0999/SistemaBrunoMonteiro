@@ -5,6 +5,12 @@
  */
 package view;
 
+import bean.BcmUsuarios;
+import dao.UsuariosDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import tools.Util;
+
 /**
  *
  * @author bruno_monteiro
@@ -14,11 +20,19 @@ public class JDlgPesquisaUsuarios extends javax.swing.JDialog {
     /**
      * Creates new form JDlgPesquisaUsuarios
      */
+    BcmUsuarioControler bcmUsuarioControler = new BcmUsuarioControler();
+    JDlgUsuario jDlgUsuario;
+
     public JDlgPesquisaUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Pesquisar Usuario");
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        List usuarios = usuariosDAO.listAll();
+        bcmUsuarioControler.setLista(usuarios);
+
+        jTable1.setModel(bcmUsuarioControler);
     }
 
     /**
@@ -83,7 +97,16 @@ public class JDlgPesquisaUsuarios extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow < 0) {
+            Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuarl", "Atenção", JOptionPane.ERROR);
+        } else {
+            BcmUsuarios bcmUsuarios = bcmUsuarioControler.getBean(selectedRow);
+            jDlgUsuario.beanView(bcmUsuarios);
+            this.dispose();
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -128,8 +151,8 @@ public class JDlgPesquisaUsuarios extends javax.swing.JDialog {
         });
     }
 
-    void setTelaAnterior(JDlgUsuario aThis) {
-        
+    void setTelaAnterior(JDlgUsuario jDlgUsuario) {
+        this.jDlgUsuario = jDlgUsuario;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
