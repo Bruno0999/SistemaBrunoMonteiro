@@ -7,14 +7,16 @@ package dao;
 
 import bean.BcmUsuarios;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import tools.Util;
 
 /**
  *
  * @author bruno_monteiro
  */
-public class UsuariosDAO extends DAOAbstract{
+public class UsuariosDAO extends DAOAbstract {
 
     @Override
     public void insert(Object object) {
@@ -54,5 +56,20 @@ public class UsuariosDAO extends DAOAbstract{
         List lista = criteria.list();
         session.getTransaction().commit();
         return (List) lista;
+    }
+
+    public Object listByNameAndPass(BcmUsuarios usuarios) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmUsuarios.class);
+        criteria.add(Restrictions.eq("bcmApelido", usuarios.getBcmApelido()));
+        criteria.add(Restrictions.eq("bcmAtivo", "S"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        if (lista.isEmpty()) {
+            Util.mostrar("Usuario incorreto ou inexistente", "Atenção", JOptionPane.ERROR);
+            return null;
+        } else {
+            return lista.get(0);
+        }
     }
 }

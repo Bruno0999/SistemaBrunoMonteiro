@@ -5,6 +5,11 @@
  */
 package view;
 
+import bean.BcmUsuarios;
+import dao.UsuariosDAO;
+import javax.swing.JOptionPane;
+import tools.Util;
+
 /**
  *
  * @author bruno_monteiro
@@ -16,6 +21,51 @@ public class JFrmLogin extends javax.swing.JFrame {
      */
     public JFrmLogin() {
         initComponents();
+        setTitle("Login");
+        setLocationRelativeTo(this);
+        setResizable(false);
+        jTxtMsg.setText("");
+        jTxtMsg1.setVisible(false);
+    }
+
+    private void verificarLogin(String apelido, String senha) {
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        BcmUsuarios bcmUsuarios, usuario;
+        bcmUsuarios = new BcmUsuarios();
+        bcmUsuarios.setBcmApelido(apelido);
+        bcmUsuarios.setBcmSenha(senha);
+
+        usuario = (BcmUsuarios) usuariosDAO.listByNameAndPass(bcmUsuarios);
+
+        if (usuario != null) {
+            if (!usuario.getBcmSenha().equals(senha)) {
+                int tentativas = usuario.getBcmTentativas();
+
+                if (tentativas >= 3) {
+                    jTxtMsg.setText("Seu usuário está bloqueado!");
+                    jTxtMsg1.setVisible(true);
+                } else {
+                    int restantes = 3 - tentativas;
+                    jTxtMsg.setText("Você tem " + restantes + " tentativa" + (restantes > 1 ? "s" : "") + " restante" + (restantes > 1 ? "s" : "") + ".");
+                    usuario.setBcmTentativas(tentativas + 1);
+                    usuariosDAO.update(usuario);
+                }
+
+            } else {
+                if (usuario.getBcmTentativas() >= 3) {
+                    jTxtMsg.setText("Seu usuário está bloqueado!");
+                    jTxtMsg1.setVisible(true);
+                } else {
+                    Util.mostrar("Login realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                    JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
+                    usuario.setBcmTentativas(0);
+                    usuariosDAO.update(usuario);
+                    jFrmPrincipal.setVisible(true);
+                    this.dispose();
+                }
+            }
+        }
+
     }
 
     /**
@@ -34,37 +84,66 @@ public class JFrmLogin extends javax.swing.JFrame {
         jPwfSenha = new javax.swing.JPasswordField();
         jBtnCancelar = new javax.swing.JButton();
         jBtnEntrar = new javax.swing.JButton();
+        jTxtMsg = new javax.swing.JLabel();
+        jTxtMsg1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("LOGIN");
 
-        jLabel2.setText("Usuario");
+        jLabel2.setText("Apelido");
 
         jLabel3.setText("Senha");
 
         jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
 
         jBtnEntrar.setText("Entrar");
+        jBtnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEntrarActionPerformed(evt);
+            }
+        });
+
+        jTxtMsg.setForeground(new java.awt.Color(255, 0, 0));
+        jTxtMsg.setText("Seu usuario está bloqueado!");
+
+        jTxtMsg1.setForeground(new java.awt.Color(255, 0, 0));
+        jTxtMsg1.setText("Entre em contato com o administrador do sistema para desbloquea-lo.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(113, Short.MAX_VALUE)
-                .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnEntrar)
-                .addGap(0, 113, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jTxtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                    .addComponent(jPwfSenha))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTxtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPwfSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBtnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jTxtMsg1)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(jTxtMsg)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -74,9 +153,13 @@ public class JFrmLogin extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(65, 65, 65)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTxtMsg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTxtMsg1)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -88,11 +171,21 @@ public class JFrmLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnCancelar)
                     .addComponent(jBtnEntrar))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jBtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEntrarActionPerformed
+        jTxtMsg.setText("");
+        jTxtMsg1.setVisible(false);
+        verificarLogin(jTxtUsuario.getText(), jPwfSenha.getText());
+    }//GEN-LAST:event_jBtnEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +229,9 @@ public class JFrmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField jPwfSenha;
+    private javax.swing.JLabel jTxtMsg;
+    private javax.swing.JLabel jTxtMsg1;
     private javax.swing.JTextField jTxtUsuario;
     // End of variables declaration//GEN-END:variables
+
 }

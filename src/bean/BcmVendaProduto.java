@@ -81,7 +81,7 @@ public class BcmVendaProduto  implements java.io.Serializable {
         return this.bcmSubtotal;
     }
     
-    public void seBcmtSubtotal(double bcmSubtotal) {
+    public void setBcmSubtotal(double bcmSubtotal) {
         this.bcmSubtotal = bcmSubtotal;
     }
 

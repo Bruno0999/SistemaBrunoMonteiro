@@ -50,6 +50,9 @@ public class JDlgUsuario extends javax.swing.JDialog {
         jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(maskCpf));
         jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(maskDtn));
 
+        jTxtTentativasLogin.setEnabled(false);
+        jbtnDesbloquear.setEnabled(false);
+
         Util.habilitar(false, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
         jChbAtivo.setSelected(true);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
@@ -64,6 +67,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
         jFmtDataNascimento.setText(Util.dateToStr(bcmUsuarios.getBcmDataNascimento()));
         jPwfSenha.setText(bcmUsuarios.getBcmSenha());
         jCboNivel.setSelectedIndex(bcmUsuarios.getBcmNivel());
+        jTxtTentativasLogin.setText(Util.intToStr(bcmUsuarios.getBcmTentativas()));
         if (bcmUsuarios.getBcmAtivo().equals("S")) {
             jChbAtivo.setSelected(true);
         } else {
@@ -80,6 +84,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
         bcmUsuarios.setBcmDataNascimento(Util.strToDate(jFmtDataNascimento.getText()));
         bcmUsuarios.setBcmSenha(jPwfSenha.getText());
         bcmUsuarios.setBcmNivel(jCboNivel.getSelectedIndex());
+        bcmUsuarios.setBcmTentativas(Util.strToInt(jTxtTentativasLogin.getText()));
         if (jChbAtivo.isSelected()) {
             bcmUsuarios.setBcmAtivo("S");
         } else {
@@ -119,6 +124,9 @@ public class JDlgUsuario extends javax.swing.JDialog {
         jBtnCancelar = new javax.swing.JButton();
         jBtnPesquisar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
+        jTxtTentativasLogin = new javax.swing.JTextField();
+        jbtnDesbloquear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -239,6 +247,23 @@ public class JDlgUsuario extends javax.swing.JDialog {
             }
         });
 
+        jLabel8.setText("Tentativas de login");
+
+        jTxtTentativasLogin.setText("0");
+        jTxtTentativasLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtTentativasLoginActionPerformed(evt);
+            }
+        });
+
+        jbtnDesbloquear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cadeado.png"))); // NOI18N
+        jbtnDesbloquear.setText("Desbloquear");
+        jbtnDesbloquear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDesbloquearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -275,7 +300,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
                     .addComponent(jTxtNome))
                 .addGap(6, 6, 6))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jBtnIncluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnAlterar)
@@ -287,6 +312,14 @@ public class JDlgUsuario extends javax.swing.JDialog {
                 .addComponent(jBtnCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnPesquisar)
+                .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTxtTentativasLogin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtnDesbloquear)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -321,7 +354,13 @@ public class JDlgUsuario extends javax.swing.JDialog {
                     .addComponent(jPwfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCboNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jChbAtivo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtTentativasLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnDesbloquear, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -374,13 +413,13 @@ public class JDlgUsuario extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         Util.limpar(jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento);
-        Util.habilitar(false, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jTxtIdUsuarios, jbtnDesbloquear, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
         jChbAtivo.setSelected(true);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        Util.habilitar(false, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jbtnDesbloquear, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
         jChbAtivo.setSelected(true);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         BcmUsuarios bcmUsuarios;
@@ -399,6 +438,12 @@ public class JDlgUsuario extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         Util.habilitar(true, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+        if (!jTxtTentativasLogin.getText().equals("")) {
+            if (Util.strToInt(jTxtTentativasLogin.getText()) > 2) {
+                jbtnDesbloquear.setEnabled(true);
+            }
+        }
+
         jChbAtivo.setSelected(true);
         incluir = false;
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
@@ -413,7 +458,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
             usuariosDAO.delete(bcmUsuarios);
             Util.limpar(jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento);
             Util.mostrar("Usuario excluido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        }else{
+        } else {
             Util.mostrar("Exclusão cancelda!", "Atenção", JOptionPane.CANCEL_OPTION);
         }
 
@@ -434,6 +479,30 @@ public class JDlgUsuario extends javax.swing.JDialog {
             evt.consume();
         }
     }//GEN-LAST:event_jTxtIdUsuariosKeyTyped
+
+    private void jTxtTentativasLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTentativasLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtTentativasLoginActionPerformed
+
+    private void jbtnDesbloquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDesbloquearActionPerformed
+        boolean des = Util.perguntar("Você deseja desbloquear esse usuario?", "Atenção");
+        if (des) {
+            jTxtTentativasLogin.setText("0");
+            Util.habilitar(false, jbtnDesbloquear, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
+            jChbAtivo.setSelected(true);
+            Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+            BcmUsuarios bcmUsuarios;
+            bcmUsuarios = viewBean();
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+
+            usuariosDAO.update(bcmUsuarios);
+            Util.mostrar("Usuario desbloqueado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+            Util.limpar(jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento);
+
+        }
+
+    }//GEN-LAST:event_jbtnDesbloquearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,10 +567,13 @@ public class JDlgUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPasswordField jPwfSenha;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTxtApelido;
     private javax.swing.JTextField jTxtIdUsuarios;
     private javax.swing.JTextField jTxtNome;
+    private javax.swing.JTextField jTxtTentativasLogin;
+    private javax.swing.JButton jbtnDesbloquear;
     // End of variables declaration//GEN-END:variables
 }
