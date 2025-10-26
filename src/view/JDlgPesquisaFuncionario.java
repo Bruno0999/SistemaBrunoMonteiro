@@ -5,6 +5,12 @@
  */
 package view;
 
+import bean.BcmFuncionarios;
+import dao.FuncionariosDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import tools.Util;
+
 /**
  *
  * @author bruno_monteiro
@@ -14,11 +20,18 @@ public class JDlgPesquisaFuncionario extends javax.swing.JDialog {
     /**
      * Creates new form JDlgPesquisaUsuarios
      */
+    JDlgFuncionario jDlgFuncionario;
+    BcmFuncionariosControler bcmFuncionariosControler = new BcmFuncionariosControler();
     public JDlgPesquisaFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Pesquisar Funcionário");
+        FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
+        List funcionarios = funcionariosDAO.listAll();
+        bcmFuncionariosControler.setLista(funcionarios);
+
+        jTable1.setModel(bcmFuncionariosControler);
     }
 
     /**
@@ -83,7 +96,14 @@ public class JDlgPesquisaFuncionario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow < 0) {
+            Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuar", "Atenção", JOptionPane.ERROR);
+        } else {
+            BcmFuncionarios funcionarios = bcmFuncionariosControler.getBean(selectedRow);
+            jDlgFuncionario.beanView(funcionarios);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -131,8 +151,8 @@ public class JDlgPesquisaFuncionario extends javax.swing.JDialog {
         });
     }
 
-    void setTelaAnterior(JDlgUsuario aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void setTelaAnterior(JDlgFuncionario jDlgFuncionario) {
+        this.jDlgFuncionario = jDlgFuncionario;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

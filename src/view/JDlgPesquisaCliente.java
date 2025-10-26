@@ -99,7 +99,7 @@ public class JDlgPesquisaCliente extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow < 0) {
-            Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuarl", "Atenção", JOptionPane.ERROR);
+            Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuar", "Atenção", JOptionPane.ERROR);
         } else {
             BcmCliente cliente = clientesControler.getBean(selectedRow);
             jDlgCliente.beanView(cliente);

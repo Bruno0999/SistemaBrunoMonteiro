@@ -5,10 +5,13 @@
  */
 package view;
 
+import bean.BcmFuncionarios;
+import dao.FuncionariosDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.input.DataFormat;
+import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import tools.Util;
@@ -23,6 +26,7 @@ public class JDlgFuncionario extends javax.swing.JDialog {
      * Creates new form JDlgCliente
      */
     MaskFormatter maskDtNas, maskDtExp, maskDtIng, maskDtPag;
+    boolean incluir = false;
 
     public JDlgFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -44,6 +48,47 @@ public class JDlgFuncionario extends javax.swing.JDialog {
 
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
 
+    }
+
+    public void beanView(BcmFuncionarios bcmFuncionarios) {
+        jTxtCodigo.setText(Util.intToStr(bcmFuncionarios.getBcmIdCodigo()));
+        jTxtNome.setText(bcmFuncionarios.getBcmNome());
+        jFmtCpf.setText(bcmFuncionarios.getBcmCpf());
+        jFmtTelefone.setText(bcmFuncionarios.getBcmTelefone());
+        jTxtNascionalidade.setText(bcmFuncionarios.getBcmNacionalidade());
+        jTxtRg.setText(bcmFuncionarios.getBcmRg());
+        jTxtOrgaoExpedidor.setText(bcmFuncionarios.getBcmOrgaoExpedidor());
+        jFmtDataExped.setText(Util.dateToStr(bcmFuncionarios.getBcmDataExpedicao()));
+        jFmtDataNasc.setText(Util.dateToStr(bcmFuncionarios.getBcmDataNascimento()));
+        jCboSexo.setSelectedIndex(Util.strToInt(bcmFuncionarios.getBcmSexo()));
+        jTxtSalario.setText(Util.doubleToStr(bcmFuncionarios.getBcmSalario()));
+        jFmtDataPag.setText(Util.dateToStr(bcmFuncionarios.getBcmDataPagamento()));
+        jCboNivel.setSelectedIndex(bcmFuncionarios.getBcmNivel());
+        jFmtDataIng.setText(Util.dateToStr(bcmFuncionarios.getBcmDataIngresso()));
+        jCboFuncao.setSelectedIndex(Util.strToInt(bcmFuncionarios.getBcmFuncao()));
+
+    }
+
+    public BcmFuncionarios viewBean() {
+        BcmFuncionarios bcmFuncionarios = new BcmFuncionarios();
+
+        bcmFuncionarios.setBcmIdCodigo(Util.strToInt(jTxtCodigo.getText()));
+        bcmFuncionarios.setBcmNome(jTxtNome.getText());
+        bcmFuncionarios.setBcmCpf(jFmtCpf.getText());
+        bcmFuncionarios.setBcmTelefone(jFmtTelefone.getText());
+        bcmFuncionarios.setBcmNacionalidade(jTxtNascionalidade.getText());
+        bcmFuncionarios.setBcmRg(jTxtRg.getText());
+        bcmFuncionarios.setBcmOrgaoExpedidor(jTxtOrgaoExpedidor.getText());
+        bcmFuncionarios.setBcmDataExpedicao(Util.strToDate(jFmtDataExped.getText()));
+        bcmFuncionarios.setBcmDataNascimento(Util.strToDate(jFmtDataNasc.getText()));
+        bcmFuncionarios.setBcmSexo(Util.intToStr(jCboSexo.getSelectedIndex()));
+        bcmFuncionarios.setBcmSalario(Util.strToDouble(jTxtSalario.getText()));
+        bcmFuncionarios.setBcmDataPagamento(Util.strToDate(jFmtDataPag.getText()));
+        bcmFuncionarios.setBcmNivel(jCboNivel.getSelectedIndex());
+        bcmFuncionarios.setBcmDataIngresso(Util.strToDate(jFmtDataIng.getText()));
+        bcmFuncionarios.setBcmFuncao(Util.intToStr(jCboFuncao.getSelectedIndex()));
+
+        return bcmFuncionarios;
     }
 
     /**
@@ -415,27 +460,51 @@ public class JDlgFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
+        Util.limpar(jTxtCodigo, jTxtNome, jFmtCpf, jFmtTelefone, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jFmtDataExped, jFmtDataNasc, jCboSexo, jTxtSalario, jFmtDataPag, jCboNivel, jFmtDataIng, jCboFuncao);
         JDlgPesquisaFuncionario jDlgPesquisaFuncionario = new JDlgPesquisaFuncionario(null, true);
+        jDlgPesquisaFuncionario.setTelaAnterior(this);
         jDlgPesquisaFuncionario.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo, jTxtNome, jFmtCpf, jFmtTelefone, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jFmtDataExped, jFmtDataNasc, jCboSexo, jTxtSalario, jFmtDataPag, jCboNivel, jFmtDataIng, jCboFuncao);
+        incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
+        Util.habilitar(true, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        incluir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-
+        boolean excluir = Util.perguntar("Deseja realmente excluir este cliente?", "Aternção");
+        if (excluir) {
+            BcmFuncionarios bcmFuncionarios = viewBean();
+            FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
+            funcionariosDAO.delete(bcmFuncionarios);
+            Util.limpar(jTxtCodigo, jTxtNome, jFmtCpf, jFmtTelefone, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jFmtDataExped, jFmtDataNasc, jCboSexo, jTxtSalario, jFmtDataPag, jCboNivel, jFmtDataIng, jCboFuncao);
+            Util.mostrar("Funcionario excluido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            Util.mostrar("Exclusão cancelda!", "Atenção", JOptionPane.CANCEL_OPTION);
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        BcmFuncionarios bcmFuncionarios = viewBean();
+        FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
+        if (incluir) {
+            funcionariosDAO.insert(bcmFuncionarios);
+            Util.mostrar("Funcionario cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            funcionariosDAO.update(bcmFuncionarios);
+            Util.mostrar("Funcionario atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        Util.limpar(jTxtCodigo, jTxtNome, jFmtCpf, jFmtTelefone, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jFmtDataExped, jFmtDataNasc, jCboSexo, jTxtSalario, jFmtDataPag, jCboNivel, jFmtDataIng, jCboFuncao);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoActionPerformed

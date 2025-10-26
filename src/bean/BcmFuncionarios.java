@@ -2,7 +2,6 @@ package bean;
 // Generated 22/09/2025 11:40:51 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,8 +35,8 @@ public class BcmFuncionarios  implements java.io.Serializable {
      private Date bcmDataNascimento;
      private String bcmSexo;
      private String bcmFuncao;
-     private Integer bcmNivel;
-     private BigDecimal bcmSalario;
+     private int bcmNivel;
+     private double bcmSalario;
      private Date bcmDataPagamento;
      private Date bcmDataIngresso;
 
@@ -48,7 +47,7 @@ public class BcmFuncionarios  implements java.io.Serializable {
     public BcmFuncionarios(int bcmIdCodigo) {
         this.bcmIdCodigo = bcmIdCodigo;
     }
-    public BcmFuncionarios(int bcmIdCodigo, String bcmNome, String bcmTelefone, String bcmCpf, String bcmRg, String bcmOrgaoExpedidor, Date bcmDataExpedicao, String bcmNacionalidade, Date bcmDataNascimento, String bcmSexo, String bcmFuncao, Integer bcmNivel, BigDecimal bcmSalario, Date bcmDataPagamento, Date bcmDataIngresso) {
+    public BcmFuncionarios(int bcmIdCodigo, String bcmNome, String bcmTelefone, String bcmCpf, String bcmRg, String bcmOrgaoExpedidor, Date bcmDataExpedicao, String bcmNacionalidade, Date bcmDataNascimento, String bcmSexo, String bcmFuncao, int bcmNivel, double bcmSalario, Date bcmDataPagamento, Date bcmDataIngresso) {
        this.bcmIdCodigo = bcmIdCodigo;
        this.bcmNome = bcmNome;
        this.bcmTelefone = bcmTelefone;
@@ -180,21 +179,21 @@ public class BcmFuncionarios  implements java.io.Serializable {
 
     
     @Column(name="bcm_nivel")
-    public Integer getBcmNivel() {
+    public int getBcmNivel() {
         return this.bcmNivel;
     }
     
-    public void setBcmNivel(Integer bcmNivel) {
+    public void setBcmNivel(int bcmNivel) {
         this.bcmNivel = bcmNivel;
     }
 
     
     @Column(name="bcm_salario", precision=9)
-    public BigDecimal getBcmSalario() {
+    public double getBcmSalario() {
         return this.bcmSalario;
     }
     
-    public void setBcmSalario(BigDecimal bcmSalario) {
+    public void setBcmSalario(double bcmSalario) {
         this.bcmSalario = bcmSalario;
     }
 
