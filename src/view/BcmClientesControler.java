@@ -29,7 +29,6 @@ public class BcmClientesControler extends AbstractTableModel {
 
     public BcmCliente getBean(int rowIndex) {
         BcmCliente cliente = (BcmCliente) listaClientes.get(rowIndex);
-        System.out.println(cliente.getBcmNome());
         return cliente;
     }
 

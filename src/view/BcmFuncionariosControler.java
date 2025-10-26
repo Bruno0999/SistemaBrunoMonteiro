@@ -29,7 +29,6 @@ public class BcmFuncionariosControler extends AbstractTableModel {
 
     public BcmFuncionarios getBean(int rowIndex) {
         BcmFuncionarios funcionarios = (BcmFuncionarios) listaFuncionarios.get(rowIndex);
-        System.out.println(funcionarios.getBcmNome());
         return funcionarios;
     }
 

@@ -481,7 +481,7 @@ public class JDlgFuncionario extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        boolean excluir = Util.perguntar("Deseja realmente excluir este cliente?", "Aternção");
+        boolean excluir = Util.perguntar("Deseja realmente excluir este funcionario?", "Aternção");
         if (excluir) {
             BcmFuncionarios bcmFuncionarios = viewBean();
             FuncionariosDAO funcionariosDAO = new FuncionariosDAO();

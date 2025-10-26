@@ -5,6 +5,11 @@
  */
 package view;
 
+import bean.BcmVenda;
+import dao.VendaDAO;
+import javax.swing.JOptionPane;
+import tools.Util;
+
 /**
  *
  * @author bruno_monteiro
@@ -14,11 +19,17 @@ public class JDlgPesquisaVenda extends javax.swing.JDialog {
     /**
      * Creates new form JDlgPesquisaUsuarios
      */
+    JDlgVenda jDlgVenda;
+    BcmVendaControler bcmVendaControler = new BcmVendaControler();
+    
     public JDlgPesquisaVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Pesquisar Venda");
+        VendaDAO vendaDAO = new VendaDAO();
+        bcmVendaControler.setLista(vendaDAO.listAll());
+        jTable1.setModel(bcmVendaControler);
     }
 
     /**
@@ -83,7 +94,14 @@ public class JDlgPesquisaVenda extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
+         int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow < 0) {
+            Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuar", "Atenção", JOptionPane.ERROR);
+        } else {
+            BcmVenda bcmVenda = bcmVendaControler.getBean(selectedRow);
+            jDlgVenda.beanView(bcmVenda);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -129,8 +147,8 @@ public class JDlgPesquisaVenda extends javax.swing.JDialog {
         });
     }
 
-    void setTelaAnterior(JDlgUsuario aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void setTelaAnterior(JDlgVenda jDlgVenda) {
+       this.jDlgVenda =jDlgVenda;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -2,7 +2,6 @@ package bean;
 // Generated 22/09/2025 11:40:51 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,11 +22,11 @@ import javax.persistence.Table;
 public class BcmVendaProduto  implements java.io.Serializable {
 
 
-     private Integer idCodigo;
+     private int idCodigo;
      private BcmProduto bcmProduto;
      private BcmVenda bcmVenda;
-     private BigDecimal subtotal;
-     private Integer quantidade;
+     private double bcmSubtotal;
+     private int bcmQuantidade;
 
     public BcmVendaProduto() {
     }
@@ -37,22 +36,22 @@ public class BcmVendaProduto  implements java.io.Serializable {
         this.bcmProduto = bcmProduto;
         this.bcmVenda = bcmVenda;
     }
-    public BcmVendaProduto(BcmProduto bcmProduto, BcmVenda bcmVenda, BigDecimal subtotal, Integer quantidade) {
+    public BcmVendaProduto(BcmProduto bcmProduto, BcmVenda bcmVenda, double bcmSubtotal, int bcmQuantidade) {
        this.bcmProduto = bcmProduto;
        this.bcmVenda = bcmVenda;
-       this.subtotal = subtotal;
-       this.quantidade = quantidade;
+       this.bcmSubtotal = bcmSubtotal;
+       this.bcmQuantidade = bcmQuantidade;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="id_codigo", unique=true, nullable=false)
-    public Integer getIdCodigo() {
+    public int getIdCodigo() {
         return this.idCodigo;
     }
     
-    public void setIdCodigo(Integer idCodigo) {
+    public void setIdCodigo(int idCodigo) {
         this.idCodigo = idCodigo;
     }
 
@@ -77,23 +76,23 @@ public class BcmVendaProduto  implements java.io.Serializable {
     }
 
     
-    @Column(name="subtotal", precision=9)
-    public BigDecimal getSubtotal() {
-        return this.subtotal;
+    @Column(name="bcm_subtotal", precision=9)
+    public double getBcmSubtotal() {
+        return this.bcmSubtotal;
     }
     
-    public void setSubtotal(BigDecimal subtotal) {
-        this.subtotal = subtotal;
+    public void seBcmtSubtotal(double bcmSubtotal) {
+        this.bcmSubtotal = bcmSubtotal;
     }
 
     
-    @Column(name="quantidade")
-    public Integer getQuantidade() {
-        return this.quantidade;
+    @Column(name="bcm_quantidade")
+    public int getBcmQuantidade() {
+        return this.bcmQuantidade;
     }
     
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setBcmQuantidade(int bcmQuantidade) {
+        this.bcmQuantidade = bcmQuantidade;
     }
 
 }

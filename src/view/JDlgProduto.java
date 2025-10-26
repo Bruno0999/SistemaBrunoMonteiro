@@ -289,7 +289,7 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        boolean excluir = Util.perguntar("Deseja realmente excluir este usuario?", "Aternção");
+        boolean excluir = Util.perguntar("Deseja realmente excluir este produto?", "Aternção");
         if (excluir) {
             BcmProduto bcmProduto = viewBean();
             ProdutosDAO produtosDAO = new ProdutosDAO();

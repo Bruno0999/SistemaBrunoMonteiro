@@ -4,7 +4,7 @@
  */
 package view;
 
-import bean.BcmUsuarios;
+import bean.BcmVenda;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -14,40 +14,44 @@ import tools.Util;
  *
  * @author brundo_monteiro
  */
-public class BcmUsuarioControler extends AbstractTableModel {
+public class BcmVendaControler extends AbstractTableModel {
 
-    private List listaUsuarios;
+    private List lista;
 
     @Override
     public int getRowCount() {
-        return listaUsuarios.size();
+        return lista.size();
     }
 
     public void setLista(List lista) {
-        this.listaUsuarios = lista;
+        this.lista = lista;
     }
 
-    public BcmUsuarios getBean(int rowIndex) {
-        BcmUsuarios usuario = (BcmUsuarios) listaUsuarios.get(rowIndex);
-        return usuario;
+    public BcmVenda getBean(int rowIndex) {
+        BcmVenda cliente = (BcmVenda) lista.get(rowIndex);
+        return cliente;
     }
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 6;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        BcmUsuarios usuarios = (BcmUsuarios) getBean(rowIndex);
+        BcmVenda venda = (BcmVenda) getBean(rowIndex);
         if (columnIndex == 0) {
-            return usuarios.getBcmIdUsuario();
+            return venda.getBcmIdVenda();
         } else if (columnIndex == 1) {
-            return usuarios.getBcmNome();
+            return Util.dateToStr(venda.getBcmData());
         } else if (columnIndex == 2) {
-            return usuarios.getBcmCpf();
-        } else if (columnIndex == 3) {
-            return Util.dateToStr(usuarios.getBcmDataNascimento());
+            return venda.getBcmCliente();
+        }else if (columnIndex == 3) {
+            return venda.getBcmFuncionarios();
+        } else if (columnIndex == 4) {
+            return venda.getBcmDesconto();
+        } else if (columnIndex == 5) {
+            return venda.getBcmTotal();
         }
         return "";
     }
@@ -57,11 +61,15 @@ public class BcmUsuarioControler extends AbstractTableModel {
         if (columnIndex == 0) {
             return "Código";
         } else if (columnIndex == 1) {
-            return "Nome";
+            return "Data";
         } else if (columnIndex == 2) {
-            return "CPF";
+            return "Cliente";
         } else if (columnIndex == 3) {
-            return "Data de nascimento";
+            return "Duncionario";
+        } else if (columnIndex == 4) {
+            return "Descontos";
+        } else if (columnIndex == 5) {
+            return "Total";
         }
         return "";
     }

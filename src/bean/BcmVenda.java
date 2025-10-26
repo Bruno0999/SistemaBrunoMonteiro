@@ -2,7 +2,6 @@ package bean;
 // Generated 22/09/2025 11:40:51 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,8 +30,8 @@ public class BcmVenda  implements java.io.Serializable {
      private BcmCliente bcmCliente;
      private BcmFuncionarios bcmFuncionarios;
      private Date bcmData;
-     private BigDecimal bcmTotal;
-     private BigDecimal bcmDesconto;
+     private double bcmTotal;
+     private double bcmDesconto;
 
     public BcmVenda() {
     }
@@ -43,7 +42,7 @@ public class BcmVenda  implements java.io.Serializable {
         this.bcmCliente = bcmCliente;
         this.bcmFuncionarios = bcmFuncionarios;
     }
-    public BcmVenda(int bcmIdVenda, BcmCliente bcmCliente, BcmFuncionarios bcmFuncionarios, Date bcmData, BigDecimal bcmTotal, BigDecimal bcmDesconto) {
+    public BcmVenda(int bcmIdVenda, BcmCliente bcmCliente, BcmFuncionarios bcmFuncionarios, Date bcmData, double bcmTotal, double bcmDesconto) {
        this.bcmIdVenda = bcmIdVenda;
        this.bcmCliente = bcmCliente;
        this.bcmFuncionarios = bcmFuncionarios;
@@ -96,21 +95,21 @@ public class BcmVenda  implements java.io.Serializable {
 
     
     @Column(name="bcm_total", precision=9)
-    public BigDecimal getBcmTotal() {
+    public double getBcmTotal() {
         return this.bcmTotal;
     }
     
-    public void setBcmTotal(BigDecimal bcmTotal) {
+    public void setBcmTotal(double bcmTotal) {
         this.bcmTotal = bcmTotal;
     }
 
     
     @Column(name="bcm_desconto", precision=9)
-    public BigDecimal getBcmDesconto() {
+    public double getBcmDesconto() {
         return this.bcmDesconto;
     }
     
-    public void setBcmDesconto(BigDecimal bcmDesconto) {
+    public void setBcmDesconto(double bcmDesconto) {
         this.bcmDesconto = bcmDesconto;
     }
 

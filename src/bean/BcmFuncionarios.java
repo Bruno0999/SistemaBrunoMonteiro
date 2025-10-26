@@ -217,6 +217,23 @@ public class BcmFuncionarios  implements java.io.Serializable {
         this.bcmDataIngresso = bcmDataIngresso;
     }
 
+    public boolean equals(Object object) {
+        if (object instanceof BcmFuncionarios) {
+            BcmFuncionarios funcionarios = (BcmFuncionarios) object;
+            if (funcionarios.getBcmIdCodigo()== this.getBcmIdCodigo()) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+    }
+    
+    public String toString(){
+        return this.bcmNome;
+    }
 }
 
 

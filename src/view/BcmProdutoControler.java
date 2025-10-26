@@ -28,7 +28,6 @@ public class BcmProdutoControler extends AbstractTableModel {
 
     public BcmProduto getBean(int rowIndex) {
         BcmProduto produto = (BcmProduto) listaProdutos.get(rowIndex);
-        System.out.println(produto.getBcmNome());
         return produto;
     }
 
