@@ -432,6 +432,7 @@ public class JDlgCliente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        Util.limpar(jTxtCodigo, jTxtNome, jFmtCpf, jFmtTelefone, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jFmtDataExped, jFmtDataNasc, jCboSexo, jTxtPais, jTxtCidade, jTxtBairro, jTxtRua, jTxtNumero);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtPais, jTxtCidade, jTxtBairro, jTxtRua, jTxtNumero, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed

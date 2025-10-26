@@ -8,6 +8,7 @@ import bean.BcmCliente;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import tools.Util;
 
 /**
  *
@@ -15,7 +16,6 @@ import javax.swing.table.AbstractTableModel;
  */
 public class BcmClientesControler extends AbstractTableModel {
 
-    private SimpleDateFormat dtnFormat = new SimpleDateFormat("dd/MM/yyyy");
     private List listaClientes;
 
     @Override
@@ -48,7 +48,7 @@ public class BcmClientesControler extends AbstractTableModel {
         } else if (columnIndex == 2) {
             return clientes.getBcmCpf();
         } else if (columnIndex == 3) {
-            return dtnFormat.format(clientes.getBcmDataNascimento());
+            return Util.dateToStr(clientes.getBcmDataNascimento());
         }
         return "";
     }

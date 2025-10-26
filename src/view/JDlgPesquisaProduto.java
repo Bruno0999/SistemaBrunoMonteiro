@@ -5,6 +5,12 @@
  */
 package view;
 
+import bean.BcmProduto;
+import dao.ProdutosDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import tools.Util;
+
 /**
  *
  * @author bruno_monteiro
@@ -14,11 +20,17 @@ public class JDlgPesquisaProduto extends javax.swing.JDialog {
     /**
      * Creates new form JDlgPesquisaUsuarios
      */
+     JDlgProduto jDlgProduto;
+     BcmProdutoControler bcmProdutoControler = new BcmProdutoControler();
     public JDlgPesquisaProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Pesquisar Produto");
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        List produtos = produtosDAO.listAll();
+        bcmProdutoControler.setLista(produtos);
+        jTable1.setModel(bcmProdutoControler);
     }
 
     /**
@@ -83,7 +95,14 @@ public class JDlgPesquisaProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
+    int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow < 0) {
+            Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuar", "Atenção", JOptionPane.ERROR);
+        } else {
+            BcmProduto produtos =  bcmProdutoControler.getBean(selectedRow);
+            jDlgProduto.beanView(produtos);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -131,8 +150,8 @@ public class JDlgPesquisaProduto extends javax.swing.JDialog {
         });
     }
 
-    void setTelaAnterior(JDlgUsuario aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void setTelaAnterior(JDlgProduto jDlgProduto) {
+        this.jDlgProduto = jDlgProduto;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

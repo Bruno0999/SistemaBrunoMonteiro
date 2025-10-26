@@ -373,6 +373,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        Util.limpar(jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento);
         Util.habilitar(false, jTxtIdUsuarios, jTxtNome, jChbAtivo, jCboNivel, jTxtApelido, jFmtCpf, jPwfSenha, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
         jChbAtivo.setSelected(true);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);

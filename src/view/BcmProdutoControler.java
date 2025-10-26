@@ -4,51 +4,52 @@
  */
 package view;
 
-import bean.BcmFuncionarios;
+import bean.BcmProduto;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import tools.Util;
 
 /**
  *
  * @author brundo_monteiro
  */
-public class BcmFuncionariosControler extends AbstractTableModel {
+public class BcmProdutoControler extends AbstractTableModel {
 
-    private List listaFuncionarios;
+    private List listaProdutos;
 
     @Override
     public int getRowCount() {
-        return listaFuncionarios.size();
+        return listaProdutos.size();
     }
 
     public void setLista(List lista) {
-        this.listaFuncionarios = lista;
+        this.listaProdutos = lista;
     }
 
-    public BcmFuncionarios getBean(int rowIndex) {
-        BcmFuncionarios funcionarios = (BcmFuncionarios) listaFuncionarios.get(rowIndex);
-        System.out.println(funcionarios.getBcmNome());
-        return funcionarios;
+    public BcmProduto getBean(int rowIndex) {
+        BcmProduto produto = (BcmProduto) listaProdutos.get(rowIndex);
+        System.out.println(produto.getBcmNome());
+        return produto;
     }
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        BcmFuncionarios funcionarios = (BcmFuncionarios) getBean(rowIndex);
+        BcmProduto produtos = (BcmProduto) getBean(rowIndex);
         if (columnIndex == 0) {
-            return funcionarios.getBcmIdCodigo();
+            return produtos.getBcmIdCodigo();
         } else if (columnIndex == 1) {
-            return funcionarios.getBcmNome();
+            return produtos.getBcmNome();
         } else if (columnIndex == 2) {
-            return funcionarios.getBcmCpf();
+            return produtos.getBcmMarca();
         } else if (columnIndex == 3) {
-            return Util.dateToStr(funcionarios.getBcmDataNascimento());
+            return produtos.getBcmModelo();
+        }else if (columnIndex == 4) {
+            return produtos.getBcmValor();
         }
         return "";
     }
@@ -60,9 +61,11 @@ public class BcmFuncionariosControler extends AbstractTableModel {
         } else if (columnIndex == 1) {
             return "Nome";
         } else if (columnIndex == 2) {
-            return "CPF";
+            return "Marca";
         } else if (columnIndex == 3) {
-            return "Data de nascimento";
+            return "Modelo";
+        }else if (columnIndex == 4) {
+            return "Valor";
         }
         return "";
     }

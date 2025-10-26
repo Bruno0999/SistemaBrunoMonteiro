@@ -2,7 +2,6 @@ package bean;
 // Generated 22/09/2025 11:40:51 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -24,7 +23,7 @@ public class BcmProduto  implements java.io.Serializable {
 
      private int bcmIdCodigo;
      private String bcmNome;
-     private BigDecimal bcmValor;
+     private double bcmValor;
      private String bcmCategoria;
      private String bcmMarca;
      private String bcmModelo;
@@ -37,7 +36,7 @@ public class BcmProduto  implements java.io.Serializable {
     public BcmProduto(int bcmIdCodigo) {
         this.bcmIdCodigo = bcmIdCodigo;
     }
-    public BcmProduto(int bcmIdCodigo, String bcmNome, BigDecimal bcmValor, String bcmCategoria, String bcmMarca, String bcmModelo, String bcmDescricao) {
+    public BcmProduto(int bcmIdCodigo, String bcmNome, double bcmValor, String bcmCategoria, String bcmMarca, String bcmModelo, String bcmDescricao) {
        this.bcmIdCodigo = bcmIdCodigo;
        this.bcmNome = bcmNome;
        this.bcmValor = bcmValor;
@@ -71,11 +70,11 @@ public class BcmProduto  implements java.io.Serializable {
 
     
     @Column(name="bcm_valor", precision=9)
-    public BigDecimal getBcmValor() {
+    public double getBcmValor() {
         return this.bcmValor;
     }
     
-    public void setBcmValor(BigDecimal bcmValor) {
+    public void setBcmValor(double bcmValor) {
         this.bcmValor = bcmValor;
     }
 

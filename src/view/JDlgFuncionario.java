@@ -455,6 +455,7 @@ public class JDlgFuncionario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        Util.limpar(jTxtCodigo, jTxtNome, jFmtCpf, jFmtTelefone, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jFmtDataExped, jFmtDataNasc, jCboSexo, jTxtSalario, jFmtDataPag, jCboNivel, jFmtDataIng, jCboFuncao);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtNascionalidade, jTxtRg, jTxtOrgaoExpedidor, jTxtSalario, jFmtCpf, jFmtDataExped, jFmtDataNasc, jFmtTelefone, jCboSexo, jBtnCancelar, jBtnConfirmar, jTxtSalario, jFmtDataPag, jFmtDataIng, jCboNivel, jCboFuncao);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnCancelarActionPerformed

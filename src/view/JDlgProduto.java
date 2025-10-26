@@ -5,6 +5,9 @@
  */
 package view;
 
+import bean.BcmProduto;
+import dao.ProdutosDAO;
+import javax.swing.JOptionPane;
 import tools.Util;
 
 /**
@@ -16,6 +19,8 @@ public class JDlgProduto extends javax.swing.JDialog {
     /**
      * Creates new form JDlgProduto
      */
+    boolean incluir = false;
+
     public JDlgProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -24,6 +29,30 @@ public class JDlgProduto extends javax.swing.JDialog {
 
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+    }
+
+    public void beanView(BcmProduto bcmCliente) {
+        jTxtCodigo.setText(Util.intToStr(bcmCliente.getBcmIdCodigo()));
+        jTxtNome.setText(bcmCliente.getBcmNome());
+        jFmtValor.setText(Util.doubleToStr(bcmCliente.getBcmValor()));
+        jTxtCategoria.setText(bcmCliente.getBcmCategoria());
+        jTxtMarca.setText(bcmCliente.getBcmMarca());
+        jTxtModelo.setText(bcmCliente.getBcmModelo());
+        jTxtDescricao.setText(bcmCliente.getBcmDescricao());
+    }
+
+    public BcmProduto viewBean() {
+        BcmProduto bcmCliente = new BcmProduto();
+
+        bcmCliente.setBcmIdCodigo(Util.strToInt(jTxtCodigo.getText()));
+        bcmCliente.setBcmNome(jTxtNome.getText());
+        bcmCliente.setBcmValor(Util.strToDouble(jFmtValor.getText()));
+        bcmCliente.setBcmCategoria(jTxtCategoria.getText());
+        bcmCliente.setBcmMarca(jTxtMarca.getText());
+        bcmCliente.setBcmModelo(jTxtModelo.getText());
+        bcmCliente.setBcmDescricao(jTxtDescricao.getText());
+
+        return bcmCliente;
     }
 
     /**
@@ -242,26 +271,49 @@ public class JDlgProduto extends javax.swing.JDialog {
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
         JDlgPesquisaProduto jDlgPesquisaProduto = new JDlgPesquisaProduto(null, true);
+        jDlgPesquisaProduto.setTelaAnterior(this);
         jDlgPesquisaProduto.setVisible(true);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo, jTxtNome, jFmtValor, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao);
+        incluir = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.habilitar(true, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        incluir = false;
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-
+        boolean excluir = Util.perguntar("Deseja realmente excluir este usuario?", "Aternção");
+        if (excluir) {
+            BcmProduto bcmProduto = viewBean();
+            ProdutosDAO produtosDAO = new ProdutosDAO();
+            produtosDAO.delete(bcmProduto);
+            Util.limpar(jTxtCodigo, jTxtNome, jFmtValor, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao);
+            Util.mostrar("Produto excluido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            Util.mostrar("Exclusão cancelda!", "Atenção", JOptionPane.CANCEL_OPTION);
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao, jFmtValor, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        BcmProduto bcmProduto = viewBean();
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        if (incluir) {
+            produtosDAO.insert(bcmProduto);
+            Util.mostrar("Produto cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            produtosDAO.update(bcmProduto);
+            Util.mostrar("Produto atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        Util.limpar(jTxtCodigo, jTxtNome, jFmtValor, jTxtCategoria, jTxtMarca, jTxtModelo, jTxtDescricao);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     /**

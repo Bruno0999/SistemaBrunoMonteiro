@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import tools.Util;
+import bean.BcmCliente;
+import bean.BcmFuncionarios;
 
 /**
  *
@@ -51,8 +53,8 @@ public class JDlgVenda extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jFmtData = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
-        jCboFuncionario = new javax.swing.JComboBox<>();
-        jCboCliente = new javax.swing.JComboBox<>();
+        jCboFuncionario = new javax.swing.JComboBox<BcmFuncionarios>();
+        jCboCliente = new javax.swing.JComboBox<BcmCliente>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -374,8 +376,8 @@ public class JDlgVenda extends javax.swing.JDialog {
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
     private javax.swing.JButton jBtnRemoverProduto;
-    private javax.swing.JComboBox<String> jCboCliente;
-    private javax.swing.JComboBox<String> jCboFuncionario;
+    private javax.swing.JComboBox<BcmCliente> jCboCliente;
+    private javax.swing.JComboBox<BcmFuncionarios> jCboFuncionario;
     private javax.swing.JFormattedTextField jFmtData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
