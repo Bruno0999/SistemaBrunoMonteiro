@@ -32,6 +32,7 @@ public class JDlgVenda extends javax.swing.JDialog {
      */
     MaskFormatter maskDt;
     boolean incluir = false;
+    public BcmVendaProdutoControler vendaProdutoControler = new BcmVendaProdutoControler();
 
     public JDlgVenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -57,6 +58,8 @@ public class JDlgVenda extends javax.swing.JDialog {
         for (BcmFuncionarios funcionarios : listFuncionario) {
             jCboFuncionario.addItem(funcionarios);
         }
+        
+        jTable1.setModel(vendaProdutoControler);
     }
 
     public void beanView(BcmVenda bcmVenda) {
@@ -336,7 +339,9 @@ public class JDlgVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_jCboClienteActionPerformed
 
     private void jBtnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAdicionarProdutoActionPerformed
-
+        JDlgVendaProduto jDlgVendaProduto = new JDlgVendaProduto(null, true);
+        jDlgVendaProduto.setTelaAnterior(this);
+        jDlgVendaProduto.setVisible(true);
     }//GEN-LAST:event_jBtnAdicionarProdutoActionPerformed
 
     private void jBtnAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdutoActionPerformed

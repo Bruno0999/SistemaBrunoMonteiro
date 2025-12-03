@@ -4,8 +4,9 @@
  */
 package view;
 
-import bean.BcmCliente;
+import bean.BcmVendaProduto;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import tools.Util;
@@ -14,22 +15,27 @@ import tools.Util;
  *
  * @author brundo_monteiro
  */
-public class BcmClientesControler extends AbstractTableModel {
+public class BcmVendaProdutoControler extends AbstractTableModel {
 
-    private List listaClientes;
+    private List listaVendaProduto = new ArrayList();
 
     @Override
     public int getRowCount() {
-        return listaClientes.size();
+        return listaVendaProduto.size();
     }
 
     public void setLista(List lista) {
-        this.listaClientes = lista;
+        this.listaVendaProduto = lista;
     }
 
-    public BcmCliente getBean(int rowIndex) {
-        BcmCliente cliente = (BcmCliente) listaClientes.get(rowIndex);
-        return cliente;
+    public void addBean(BcmVendaProduto bcmVendaProduto) {
+        this.listaVendaProduto.add(bcmVendaProduto);
+        this.fireTableDataChanged();
+    }
+    
+    public BcmVendaProduto getBean(int rowIndex) {
+        BcmVendaProduto vendaProduto = (BcmVendaProduto) listaVendaProduto.get(rowIndex);
+        return vendaProduto;
     }
 
     @Override
@@ -39,15 +45,15 @@ public class BcmClientesControler extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        BcmCliente clientes = (BcmCliente) getBean(rowIndex);
+        BcmVendaProduto vendaProdutos = (BcmVendaProduto) getBean(rowIndex);
         if (columnIndex == 0) {
-            return clientes.getBcmIdCodigo();
+            return vendaProdutos.getBcmProduto().getBcmNome();
         } else if (columnIndex == 1) {
-            return clientes.getBcmNome();
+            return vendaProdutos.getBcmProduto().getBcmValor();
         } else if (columnIndex == 2) {
-            return clientes.getBcmCpf();
+            return vendaProdutos.getBcmQuantidade();
         } else if (columnIndex == 3) {
-            return Util.dateToStr(clientes.getBcmDataNascimento());
+            return vendaProdutos.getBcmSubtotal();
         }
         return "";
     }
@@ -55,14 +61,15 @@ public class BcmClientesControler extends AbstractTableModel {
     @Override
     public String getColumnName(int columnIndex) {
         if (columnIndex == 0) {
-            return "Código";
+            return "Produto";
         } else if (columnIndex == 1) {
-            return "Nome";
+            return "Valor Unitário";
         } else if (columnIndex == 2) {
-            return "CPF";
+            return "Quantidade";
         } else if (columnIndex == 3) {
-            return "Data de nascimento";
+            return "Subtotal";
         }
         return "";
     }
+
 }

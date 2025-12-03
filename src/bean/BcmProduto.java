@@ -117,6 +117,10 @@ public class BcmProduto  implements java.io.Serializable {
     public void setBcmDescricao(String bcmDescricao) {
         this.bcmDescricao = bcmDescricao;
     }
+
+    public String toString(){
+        return this.getBcmNome();
+    }
 }
 
 

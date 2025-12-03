@@ -5,6 +5,13 @@
  */
 package view;
 
+import bean.BcmProduto;
+import bean.BcmVendaProduto;
+import dao.ProdutosDAO;
+import java.util.ArrayList;
+import java.util.List;
+import tools.Util;
+
 /**
  *
  * @author bruno_monteiro
@@ -14,11 +21,63 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
     /**
      * Creates new form JDlgVendaProduto
      */
+    JDlgVenda jDlgVenda;
+
     public JDlgVendaProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Venda Produto");
+
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+
+        List listaProdutos = produtosDAO.listAll();
+        limparCampos();
+
+        for (Object produto : listaProdutos) {
+            jCboProduto.addItem((BcmProduto) produto);
+        }
+        
+        jTxtValorUnitario.setEnabled(false);
+        jTxtTotal.setEnabled(false);
+
+    }
+
+    private void limparCampos() {
+        jCboProduto.setSelectedIndex(-1);
+        jTxtQuantidade.setText("1");
+        jTxtTotal.setText("");
+        jTxtValorUnitario.setText("");
+    }
+
+    private void calcularTotal() {
+        BcmProduto bcmProduto = (BcmProduto) jCboProduto.getSelectedItem();
+
+        if (bcmProduto == null) {
+            jTxtValorUnitario.setText("");
+            jTxtTotal.setText("");
+            return;
+        }
+
+        String qtdStr = jTxtQuantidade.getText().trim();
+
+        if (qtdStr.isEmpty()) {
+            jTxtTotal.setText("");
+            return;
+        }
+
+        int qtdProd;
+        try {
+            qtdProd = Integer.parseInt(qtdStr);
+        } catch (NumberFormatException e) {
+            qtdProd = 0;
+        }
+
+        double valorUnit = bcmProduto.getBcmValor();
+        double total = qtdProd * valorUnit;
+
+        jTxtValorUnitario.setText(Util.doubleToStr(valorUnit));
+        jTxtTotal.setText(Util.doubleToStr(total));
     }
 
     /**
@@ -31,7 +90,6 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -39,6 +97,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
         jTxtValorUnitario = new javax.swing.JTextField();
         jTxtTotal = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jCboProduto = new javax.swing.JComboBox<BcmProduto>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,6 +108,17 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
         jLabel2.setText("Valor unitário");
 
         jLabel3.setText("Total");
+
+        jTxtQuantidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTxtQuantidadeFocusLost(evt);
+            }
+        });
+        jTxtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtQuantidadeActionPerformed(evt);
+            }
+        });
 
         jTxtValorUnitario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +137,12 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jCboProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCboProdutoActionPerformed(evt);
             }
         });
 
@@ -95,7 +171,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
                                 .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCboProduto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton1))
@@ -109,7 +185,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel4)
                 .addGap(2, 2, 2)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCboProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -137,8 +213,26 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtTotalActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        BcmVendaProduto bcmVendaProduto = new BcmVendaProduto();
+        bcmVendaProduto.setBcmProduto((BcmProduto) jCboProduto.getSelectedItem());
+        bcmVendaProduto.setBcmQuantidade(Util.strToInt(jTxtQuantidade.getText()));
+        bcmVendaProduto.setBcmSubtotal(Util.strToDouble(jTxtTotal.getText()));
+        
+        jDlgVenda.vendaProdutoControler.addBean(bcmVendaProduto);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCboProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboProdutoActionPerformed
+        calcularTotal();
+    }//GEN-LAST:event_jCboProdutoActionPerformed
+
+    private void jTxtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtQuantidadeActionPerformed
+        
+    }//GEN-LAST:event_jTxtQuantidadeActionPerformed
+
+    private void jTxtQuantidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtQuantidadeFocusLost
+        calcularTotal();
+    }//GEN-LAST:event_jTxtQuantidadeFocusLost
 
     /**
      * @param args the command line arguments
@@ -184,7 +278,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<BcmProduto> jCboProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -193,4 +287,8 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
     private javax.swing.JTextField jTxtTotal;
     private javax.swing.JTextField jTxtValorUnitario;
     // End of variables declaration//GEN-END:variables
+
+    void setTelaAnterior(JDlgVenda venda) {
+        this.jDlgVenda = venda;
+    }
 }
