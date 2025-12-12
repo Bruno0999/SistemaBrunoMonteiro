@@ -67,7 +67,11 @@ public class Util {
     }
 
     public static double strToDouble(String value) {
-        return Double.valueOf(value);
+        if (value.trim().equals("")) {
+            return Double.valueOf(0);
+        } else {
+            return Double.valueOf(value);
+        }
     }
 
     public static Date strToDate(String cad) {

@@ -26,6 +26,7 @@ public class BcmVendaProdutoControler extends AbstractTableModel {
 
     public void setLista(List lista) {
         this.listaVendaProduto = lista;
+        this.fireTableDataChanged();
     }
 
     public void addBean(BcmVendaProduto bcmVendaProduto) {
@@ -36,6 +37,11 @@ public class BcmVendaProdutoControler extends AbstractTableModel {
     public BcmVendaProduto getBean(int rowIndex) {
         BcmVendaProduto vendaProduto = (BcmVendaProduto) listaVendaProduto.get(rowIndex);
         return vendaProduto;
+    }
+    
+    public void removeBean(int rowIndex) {
+        this.listaVendaProduto.remove(rowIndex);
+        this.fireTableDataChanged();
     }
 
     @Override

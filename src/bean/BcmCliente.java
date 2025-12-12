@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="bcm_cliente"
-    ,catalog="bruno_monteiro"
+    ,catalog="db_bruno_monteiro"
 )
 public class BcmCliente  implements java.io.Serializable {
 

@@ -65,7 +65,7 @@ public class BcmVendaControler extends AbstractTableModel {
         } else if (columnIndex == 2) {
             return "Cliente";
         } else if (columnIndex == 3) {
-            return "Duncionario";
+            return "Funcionario";
         } else if (columnIndex == 4) {
             return "Descontos";
         } else if (columnIndex == 5) {

@@ -5,6 +5,7 @@
  */
 package dao;
 
+import bean.BcmVenda;
 import bean.BcmVendaProduto;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -26,14 +27,22 @@ public class VendaProdutoDAO extends DAOAbstract {
     @Override
     public void update(Object object) {
         session.beginTransaction();
-        session.update(object);
+
+        session.merge(object); 
         session.getTransaction().commit();
+        session.clear();
     }
 
     @Override
     public void delete(Object object) {
         session.beginTransaction();
-        session.delete(object);
+
+        Object managed = session.merge(object);
+        session.delete(managed);
+
+        session.flush();
+        session.clear();
+
         session.getTransaction().commit();
     }
 
@@ -54,5 +63,14 @@ public class VendaProdutoDAO extends DAOAbstract {
         List lista = criteria.list();
         session.getTransaction().commit();
         return (List) lista;
+    }
+
+    public List listProdutos(BcmVenda bcmVenda) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmVendaProduto.class);
+        criteria.add(Restrictions.eq("bcmVenda", bcmVenda));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
     }
 }

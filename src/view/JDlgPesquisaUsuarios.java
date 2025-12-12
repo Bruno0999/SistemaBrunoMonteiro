@@ -61,6 +61,11 @@ public class JDlgPesquisaUsuarios extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("OK");
@@ -108,6 +113,19 @@ public class JDlgPesquisaUsuarios extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedRow = jTable1.getSelectedRow();
+            if (selectedRow < 0) {
+                Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuarl", "Atenção", JOptionPane.ERROR);
+            } else {
+                BcmUsuarios bcmUsuarios = bcmUsuarioControler.getBean(selectedRow);
+                jDlgUsuario.beanView(bcmUsuarios);
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

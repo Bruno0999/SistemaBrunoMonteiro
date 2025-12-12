@@ -14,9 +14,8 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author bruno_monteiro
  */
-public class VendaDAO extends DAOAbstract{
+public class VendaDAO extends DAOAbstract {
 
-    
     @Override
     public void insert(Object object) {
         session.beginTransaction();
@@ -27,14 +26,22 @@ public class VendaDAO extends DAOAbstract{
     @Override
     public void update(Object object) {
         session.beginTransaction();
-        session.update(object);
+
+        session.merge(object);
         session.getTransaction().commit();
+        session.clear();
     }
 
     @Override
     public void delete(Object object) {
         session.beginTransaction();
-        session.delete(object);
+
+        Object managed = session.merge(object);
+        session.delete(managed);
+
+        session.flush();
+        session.clear();
+
         session.getTransaction().commit();
     }
 

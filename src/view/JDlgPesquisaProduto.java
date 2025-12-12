@@ -20,8 +20,9 @@ public class JDlgPesquisaProduto extends javax.swing.JDialog {
     /**
      * Creates new form JDlgPesquisaUsuarios
      */
-     JDlgProduto jDlgProduto;
-     BcmProdutoControler bcmProdutoControler = new BcmProdutoControler();
+    JDlgProduto jDlgProduto;
+    BcmProdutoControler bcmProdutoControler = new BcmProdutoControler();
+
     public JDlgPesquisaProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -59,6 +60,11 @@ public class JDlgPesquisaProduto extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("OK");
@@ -95,15 +101,28 @@ public class JDlgPesquisaProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    int selectedRow = jTable1.getSelectedRow();
+        int selectedRow = jTable1.getSelectedRow();
         if (selectedRow < 0) {
             Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuar", "Atenção", JOptionPane.ERROR);
         } else {
-            BcmProduto produtos =  bcmProdutoControler.getBean(selectedRow);
+            BcmProduto produtos = bcmProdutoControler.getBean(selectedRow);
             jDlgProduto.beanView(produtos);
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedRow = jTable1.getSelectedRow();
+            if (selectedRow < 0) {
+                Util.mostrar("Nenhuma linha selecionada, selecione uma antes de contrinuar", "Atenção", JOptionPane.ERROR);
+            } else {
+                BcmProduto produtos = bcmProdutoControler.getBean(selectedRow);
+                jDlgProduto.beanView(produtos);
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

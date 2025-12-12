@@ -8,6 +8,7 @@ package view;
 import bean.BcmProduto;
 import bean.BcmVendaProduto;
 import dao.ProdutosDAO;
+import dao.VendaProdutoDAO;
 import java.util.ArrayList;
 import java.util.List;
 import tools.Util;
@@ -18,10 +19,10 @@ import tools.Util;
  */
 public class JDlgVendaProduto extends javax.swing.JDialog {
 
-    /**
-     * Creates new form JDlgVendaProduto
-     */
     JDlgVenda jDlgVenda;
+
+    public boolean inserir = true;
+    private int linha = -1;
 
     public JDlgVendaProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -37,7 +38,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
         for (Object produto : listaProdutos) {
             jCboProduto.addItem((BcmProduto) produto);
         }
-        
+
         jTxtValorUnitario.setEnabled(false);
         jTxtTotal.setEnabled(false);
 
@@ -48,6 +49,20 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
         jTxtQuantidade.setText("1");
         jTxtTotal.setText("");
         jTxtValorUnitario.setText("");
+    }
+
+    public void beanView(BcmVendaProduto bcmVendaProduto) {
+        jTxtQuantidade.setText(Util.intToStr(bcmVendaProduto.getBcmQuantidade()));
+        jCboProduto.setSelectedItem(bcmVendaProduto);
+        this.inserir = false;
+    }
+
+    public int getLinha() {
+        return linha;
+    }
+
+    public void setLinha(int linha) {
+        this.linha = linha;
     }
 
     private void calcularTotal() {
@@ -78,6 +93,7 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
 
         jTxtValorUnitario.setText(Util.doubleToStr(valorUnit));
         jTxtTotal.setText(Util.doubleToStr(total));
+
     }
 
     /**
@@ -109,14 +125,14 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
 
         jLabel3.setText("Total");
 
-        jTxtQuantidade.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTxtQuantidadeFocusLost(evt);
-            }
-        });
         jTxtQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtQuantidadeActionPerformed(evt);
+            }
+        });
+        jTxtQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTxtQuantidadeKeyReleased(evt);
             }
         });
 
@@ -217,8 +233,13 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
         bcmVendaProduto.setBcmProduto((BcmProduto) jCboProduto.getSelectedItem());
         bcmVendaProduto.setBcmQuantidade(Util.strToInt(jTxtQuantidade.getText()));
         bcmVendaProduto.setBcmSubtotal(Util.strToDouble(jTxtTotal.getText()));
-        
+
+        if (!inserir && getLinha() > -1) {
+            this.jDlgVenda.vendaProdutoControler.removeBean(getLinha());
+        }
+
         jDlgVenda.vendaProdutoControler.addBean(bcmVendaProduto);
+        jDlgVenda.atualizarTotal();
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -227,12 +248,12 @@ public class JDlgVendaProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jCboProdutoActionPerformed
 
     private void jTxtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtQuantidadeActionPerformed
-        
+
     }//GEN-LAST:event_jTxtQuantidadeActionPerformed
 
-    private void jTxtQuantidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTxtQuantidadeFocusLost
+    private void jTxtQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtQuantidadeKeyReleased
         calcularTotal();
-    }//GEN-LAST:event_jTxtQuantidadeFocusLost
+    }//GEN-LAST:event_jTxtQuantidadeKeyReleased
 
     /**
      * @param args the command line arguments

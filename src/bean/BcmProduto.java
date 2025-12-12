@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="bcm_produto"
-    ,catalog="bruno_monteiro"
+    ,catalog="db_bruno_monteiro"
 )
 public class BcmProduto  implements java.io.Serializable {
 

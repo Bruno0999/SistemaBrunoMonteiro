@@ -17,12 +17,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="bcm_venda_produto"
-    ,catalog="bruno_monteiro"
+    ,catalog="db_bruno_monteiro"
 )
 public class BcmVendaProduto  implements java.io.Serializable {
 
 
-     private int idCodigo;
+     private int bcmIdCodigo;
      private BcmProduto bcmProduto;
      private BcmVenda bcmVenda;
      private double bcmSubtotal;
@@ -46,13 +46,13 @@ public class BcmVendaProduto  implements java.io.Serializable {
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="id_codigo", unique=true, nullable=false)
-    public int getIdCodigo() {
-        return this.idCodigo;
+    @Column(name="bcm_id_codigo", unique=true, nullable=false)
+    public int getBcmIdCodigo() {
+        return this.bcmIdCodigo;
     }
     
-    public void setIdCodigo(int idCodigo) {
-        this.idCodigo = idCodigo;
+    public void setBcmIdCodigo(int bcmIdCodigo) {
+        this.bcmIdCodigo = bcmIdCodigo;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)

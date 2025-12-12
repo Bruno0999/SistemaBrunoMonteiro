@@ -26,6 +26,8 @@ public class ClienteDAO extends DAOAbstract {
     @Override
     public void update(Object object) {
         session.beginTransaction();
+        session.flush();
+        session.clear();
         session.update(object);
         session.getTransaction().commit();
     }
@@ -33,6 +35,8 @@ public class ClienteDAO extends DAOAbstract {
     @Override
     public void delete(Object object) {
         session.beginTransaction();
+        session.flush();
+        session.clear();
         session.delete(object);
         session.getTransaction().commit();
     }
