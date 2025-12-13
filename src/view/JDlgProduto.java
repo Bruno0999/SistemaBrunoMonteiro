@@ -90,7 +90,7 @@ public class JDlgProduto extends javax.swing.JDialog {
 
         jLabel1.setText("Codigo");
 
-        jLabel2.setText("Nome");
+        jLabel2.setText("Nome do produto");
 
         jLabel3.setText("Valor Unitário");
 
@@ -100,13 +100,13 @@ public class JDlgProduto extends javax.swing.JDialog {
             }
         });
 
-        jLabel4.setText("Marca");
+        jLabel4.setText("Marca do veiculo");
 
-        jLabel5.setText("Modelo");
+        jLabel5.setText("Modelo do veiculo");
 
-        jLabel6.setText("Categoria");
+        jLabel6.setText("Categoria do produto");
 
-        jLabel7.setText("Descrição");
+        jLabel7.setText("Descrição do produto");
 
         jBtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar.png"))); // NOI18N
         jBtnCancelar.setMnemonic('r');

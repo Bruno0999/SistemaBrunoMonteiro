@@ -42,9 +42,9 @@ Contributor(s):
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_bruno_monteiro?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">rondon@11</property>
+    <property name="hibernate.connection.url">jdbc:mysql://10.7.0.51:33062/db_bruno_monteiro?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">bruno_monteiro</property>
+    <property name="hibernate.connection.password">bruno_monteiro</property>
     <mapping class="bean.BcmFuncionarios"/>
     <mapping class="bean.BcmVendaProduto"/>
     <mapping class="bean.BcmProduto"/>

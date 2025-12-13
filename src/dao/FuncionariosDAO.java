@@ -59,4 +59,32 @@ public class FuncionariosDAO extends DAOAbstract{
         session.getTransaction().commit();
         return (List) lista;
     }
+    
+    
+    public List listNome (String nome){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmFuncionarios.class);
+        criteria.add(Restrictions.like("bcmNome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    public List listCpf (String cpf){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmFuncionarios.class);
+        criteria.add(Restrictions.like("bcmCpf", "%" + cpf + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    public List listNomeCpf (String nome, String cpf){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmFuncionarios.class);
+        criteria.add(Restrictions.like("bcmNome", "%" + nome + "%"));
+        criteria.add(Restrictions.like("bcmCpf", "%" + cpf + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 }

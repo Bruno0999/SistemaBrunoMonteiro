@@ -59,4 +59,32 @@ public class ProdutosDAO extends DAOAbstract {
         session.getTransaction().commit();
         return (List) lista;
     }
+    
+    
+    public List listNome (String nome){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmProduto.class);
+        criteria.add(Restrictions.like("bcmNome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    public List listModelo (String modelo){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmProduto.class);
+        criteria.add(Restrictions.like("bcmModelo", "%" + modelo + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    public List listNomeModelo (String nome, String modelo){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmProduto.class);
+        criteria.add(Restrictions.like("bcmNome", "%" + nome + "%"));
+        criteria.add(Restrictions.like("bcmModelo", "%" + modelo + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 }
