@@ -3,7 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/BcmVendaProdutoControler.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgPesquisaFuncionario.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/dao/ProdutosDAO.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgVendaProduto.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JFrmLogin.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgUsuario.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/dao/DAOAbstract.java</file>
             <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgVenda.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/dao/VendaDAO.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/BcmVendaControler.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgProduto.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgPesquisaCliente.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/dao/UsuariosDAO.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgPesquisaUsuarios.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JFrmPrincipal.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/dao/ClienteDAO.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/dao/FuncionariosDAO.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/dao/VendaProdutoDAO.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/dao/HibernateUtil.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgCliente.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgPesquisaVenda.java</file>
+            <file>file:/C:/Users/edivi/Documents/NetBeansProjects/SistemaBrunoMonteiro/src/view/JDlgPesquisaProduto.java</file>
         </group>
     </open-files>
 </project-private>
