@@ -98,7 +98,7 @@ public class JDlgVenda extends javax.swing.JDialog {
         int qtdLinhas = vendaProdutoControler.getRowCount();
 
         for (int i = 0; i < qtdLinhas; i++) {
-            BcmVendaProduto bcmVendaProduto = vendaProdutoControler.getBean(0);
+            BcmVendaProduto bcmVendaProduto = vendaProdutoControler.getBean(i);
             total += bcmVendaProduto.getBcmSubtotal();
         }
 
@@ -479,6 +479,7 @@ public class JDlgVenda extends javax.swing.JDialog {
         if (Util.perguntar("Deseja Excluir?", "Atenção") == true) {
             int rowindex = jTable1.getSelectedRow();
             vendaProdutoControler.removeBean(rowindex);
+            atualizarTotal();
         }
     }//GEN-LAST:event_jBtnRemoverProdutoActionPerformed
 

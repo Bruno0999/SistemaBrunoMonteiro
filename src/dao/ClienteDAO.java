@@ -50,6 +50,33 @@ public class ClienteDAO extends DAOAbstract {
         session.getTransaction().commit();
         return lista.get(0);
     }
+    
+    public List listNome (String nome){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmCliente.class);
+        criteria.add(Restrictions.like("bcmNome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    
+    public List listCpf (String cpf){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmCliente.class);
+        criteria.add(Restrictions.like("bcmCpf", "%" + cpf + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+    public List listNomeCpf (String nome, String cpf){
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(BcmCliente.class);
+        criteria.add(Restrictions.like("bcmNome", "%" + nome + "%"));
+        criteria.add(Restrictions.like("bcmCpf", "%" + cpf + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
 
     @Override
     public List listAll() {

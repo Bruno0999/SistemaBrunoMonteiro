@@ -5,7 +5,9 @@
  */
 package dao;
 
+import bean.BcmCliente;
 import bean.BcmVenda;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -63,4 +65,42 @@ public class VendaDAO extends DAOAbstract {
         session.getTransaction().commit();
         return (List) lista;
     }
+
+    public List<BcmVenda> listClienteData(BcmCliente cliente, Date data) {
+        session.beginTransaction();
+
+        Criteria criteria = session.createCriteria(BcmVenda.class);
+        criteria.add(Restrictions.eq("bcmCliente", cliente));
+        criteria.add(Restrictions.eq("bcmData", data));
+
+        List<BcmVenda> lista = criteria.list();
+        session.getTransaction().commit();
+
+        return lista;
+    }
+
+    public List<BcmVenda> listCliente(BcmCliente cliente) {
+        session.beginTransaction();
+
+        Criteria criteria = session.createCriteria(BcmVenda.class);
+        criteria.add(Restrictions.eq("bcmCliente", cliente));
+
+        List<BcmVenda> lista = criteria.list();
+        session.getTransaction().commit();
+
+        return lista;
+    }
+
+    public List<BcmVenda> listData(Date data) {
+        session.beginTransaction();
+
+        Criteria criteria = session.createCriteria(BcmVenda.class);
+        criteria.add(Restrictions.eq("bcmData", data));
+
+        List<BcmVenda> lista = criteria.list();
+        session.getTransaction().commit();
+
+        return lista;
+    }
+
 }

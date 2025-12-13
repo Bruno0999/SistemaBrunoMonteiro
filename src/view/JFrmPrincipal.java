@@ -51,6 +51,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
         setTitle("Principal");
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
@@ -296,7 +297,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        JDlgConsultaCliente jDlgConsultaCliente = new JDlgConsultaCliente(null, true);
+        jDlgConsultaCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -305,7 +307,8 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        JDlgConsultaVenda consultaVenda = new JDlgConsultaVenda(null, true);
+        consultaVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
